@@ -103,7 +103,6 @@
       max-width: 1400px; margin-left: auto; margin-right: auto;
       border-radius: 16px;
       overflow: hidden;
-      /* Zoom out: Use aspect-ratio to show the full frame of the motorcycle */
       aspect-ratio: 16/9;
       height: auto;
       position: relative;
@@ -114,6 +113,7 @@
       object-position: center 20%;
       transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .hero-image:hover img { transform: scale(1.02); }
     .hero-image-overlay {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 40px 48px;
@@ -528,8 +528,10 @@
 
     /* ---- Motion Reveal Base ---- */
     .reveal {
-      opacity: 0;
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
 
     /* ---- Responsive ---- */
     @media (max-width: 1024px) {
@@ -873,58 +875,55 @@
     </div>
   </footer>
 
-  <script type="module">
-    import * as THREE from "https://cdn.jsdelivr.net/npm/three@v0.149.0/build/three.module.js"
-    import { animate, inView, frame } from "https://cdn.jsdelivr.net/npm/motion@12.34.0/+esm"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.149.0/three.min.js"></script>
+  <script>
+    // 1. Reveal System
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // 1. Motion Reveal System
-    inView(".reveal", ({ target }) => {
-      animate(
-        target,
-        { opacity: 1, y: [30, 0] },
-        { duration: 0.9, easing: [0.17, 0.55, 0.55, 1] }
-      )
-    })
+    // 2. Three.js for Process
+    const container = document.getElementById("three-container");
+    if (container) {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(container.offsetWidth, container.offsetHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
 
-    // 2. Three.js Background for Process
-    const container = document.getElementById("three-container")
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setSize(container.offsetWidth, container.offsetHeight)
-    renderer.setPixelRatio(window.devicePixelRatio)
-    container.appendChild(renderer.domElement)
+      const geometry = new THREE.IcosahedronGeometry(2, 1);
+      const material = new THREE.MeshPhongMaterial({ 
+        color: 0x111111, 
+        wireframe: true,
+        transparent: true,
+        opacity: 0.1
+      });
+      const sphere = new THREE.Mesh(geometry, material);
+      scene.add(sphere);
 
-    const geometry = new THREE.IcosahedronGeometry(2, 1)
-    const material = new THREE.MeshPhongMaterial({ 
-      color: 0x111111, 
-      wireframe: true,
-      transparent: true,
-      opacity: 0.1
-    })
-    const sphere = new THREE.Mesh(geometry, material)
-    scene.add(sphere)
+      const light = new THREE.DirectionalLight(0xffffff, 1);
+      light.position.set(5, 5, 5);
+      scene.add(light);
+      scene.add(new THREE.AmbientLight(0x404040));
 
-    const light = new THREE.DirectionalLight(0xffffff, 1)
-    light.position.set(5, 5, 5)
-    scene.add(light)
-    scene.add(new THREE.AmbientLight(0x404040))
+      camera.position.z = 5;
 
-    camera.position.z = 5
+      function animate() {
+        requestAnimationFrame(animate);
+        sphere.rotation.y += 0.002;
+        sphere.rotation.z += 0.001;
+        renderer.render(scene, camera);
+      }
+      animate();
 
-    // Render loop using Motion's frame for sync
-    frame.render(() => {
-      sphere.rotation.y += 0.002
-      sphere.rotation.z += 0.001
-      renderer.render(scene, camera)
-    })
-
-    // Handle Resize
-    window.addEventListener('resize', () => {
-      camera.aspect = container.offsetWidth / container.offsetHeight
-      camera.updateProjectionMatrix()
-      renderer.setSize(container.offsetWidth, container.offsetHeight)
-    })
+      window.addEventListener('resize', () => {
+        camera.aspect = container.offsetWidth / container.offsetHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+      });
+    }
   </script>
 
 </body>
