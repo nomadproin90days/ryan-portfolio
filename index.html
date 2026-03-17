@@ -103,16 +103,17 @@
       max-width: 1400px; margin-left: auto; margin-right: auto;
       border-radius: 16px;
       overflow: hidden;
-      height: clamp(320px, 50vw, 680px);
+      /* Zoom out: Use aspect-ratio to show the full frame of the motorcycle */
+      aspect-ratio: 16/9;
+      height: auto;
       position: relative;
     }
     .hero-image img {
       width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center 40%;
+      object-position: center 20%;
       transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .hero-image:hover img { transform: scale(1.02); }
     .hero-image-overlay {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 40px 48px;
@@ -341,7 +342,17 @@
       padding: clamp(100px, 15vh, 200px) clamp(20px, 4vw, 56px);
       max-width: 1400px; margin: 0 auto;
       border-top: 1px solid var(--border);
+      position: relative;
     }
+    #three-container {
+      position: absolute;
+      top: 0; right: 0;
+      width: 400px; height: 100%;
+      pointer-events: none;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    .process-content { position: relative; z-index: 1; }
     .process-label {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 13px; font-weight: 600; color: #999;
@@ -515,20 +526,10 @@
     }
     footer .links a:hover { color: var(--text); }
 
-    /* ---- Animations ---- */
+    /* ---- Motion Reveal Base ---- */
     .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
     }
-    .reveal.vis { opacity: 1; transform: translateY(0); }
-    .d1 { transition-delay: 0.1s; }
-    .d2 { transition-delay: 0.2s; }
-    .d3 { transition-delay: 0.3s; }
-    .d4 { transition-delay: 0.4s; }
-
-    .page-enter { opacity: 0; }
-    .page-ready { opacity: 1; transition: opacity 0.6s ease; }
 
     /* ---- Responsive ---- */
     @media (max-width: 1024px) {
@@ -539,6 +540,7 @@
       .featured-left { grid-template-columns: 1fr 1fr; }
       .about-grid { grid-template-columns: 1fr; }
       .about-right { max-height: 500px; order: -1; }
+      #three-container { display: none; }
     }
     @media (max-width: 768px) {
       .projects-grid { grid-template-columns: 1fr; }
@@ -564,7 +566,7 @@
   </style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23111111%22/></svg>">
 </head>
-<body class="page-enter">
+<body class="page-ready">
 
   <nav>
     <a href="#" class="nav-logo">Luxe Tide Studio</a>
@@ -582,13 +584,13 @@
   <section class="hero">
     <h1 class="reveal">Automation<br/>Studio</h1>
     <div class="hero-sub">
-      <p class="reveal d1"><strong>Ryan Christmas</strong> builds the systems that let agencies and startups scale without adding headcount. CRM automation, AI workflows, full-stack development.</p>
-      <p class="reveal d2">Based in <strong>Puerto Escondido, Oaxaca</strong>. Originally from <strong>Toronto, Canada</strong>. Working remotely across time zones since 2023.</p>
+      <p class="reveal"><strong>Ryan Christmas</strong> builds the systems that let agencies and startups scale without adding headcount. CRM automation, AI workflows, full-stack development.</p>
+      <p class="reveal">Based in <strong>Puerto Escondido, Oaxaca</strong>. Originally from <strong>Toronto, Canada</strong>. Working remotely across time zones since 2023.</p>
     </div>
   </section>
 
   <!-- Hero Image -->
-  <div class="hero-image reveal d3">
+  <div class="hero-image reveal">
     <img src="images/ryan-coast.jpg" alt="Ryan Christmas on the coast of Puerto Escondido" />
     <div class="hero-image-overlay">
       <span class="loc">Puerto Escondido, Oaxaca, MX</span>
@@ -602,15 +604,15 @@
       <div class="info-label">Email</div>
       <div class="info-val"><a href="mailto:ryan@luxetidestudio.com">ryan@luxetidestudio.com</a></div>
     </div>
-    <div class="info-cell reveal d1">
+    <div class="info-cell reveal">
       <div class="info-label">WhatsApp</div>
       <div class="info-val"><a href="https://wa.me/16194166678">+1 619 416 6678</a></div>
     </div>
-    <div class="info-cell reveal d2">
+    <div class="info-cell reveal">
       <div class="info-label">Mobile</div>
       <div class="info-val"><a href="tel:+529541772437">+52 954 177 2437</a></div>
     </div>
-    <div class="info-cell reveal d3">
+    <div class="info-cell reveal">
       <div class="info-label">Location</div>
       <div class="info-val">Puerto Escondido, MX</div>
     </div>
@@ -620,8 +622,8 @@
   <section class="studio">
     <h2 class="reveal">Build systems,<br/>not busywork.</h2>
     <div class="studio-grid">
-      <p class="reveal d1">I build the technical infrastructure that lets agencies and startups operate at scale. CRM automations, AI-powered workflows, marketing pipelines, compliance systems, and full-stack web applications.</p>
-      <p class="reveal d2">Every project ships production-ready with clean documentation, full handoffs, and zero lock-in. I work like an extension of your team. Outcomes over hours. Ship fast, hand off clean, disappear.</p>
+      <p class="reveal">I build the technical infrastructure that lets agencies and startups operate at scale. CRM automations, AI-powered workflows, marketing pipelines, compliance systems, and full-stack web applications.</p>
+      <p class="reveal">Every project ships production-ready with clean documentation, full handoffs, and zero lock-in. I work like an extension of your team. Outcomes over hours. Ship fast, hand off clean, disappear.</p>
     </div>
   </section>
 
@@ -630,10 +632,10 @@
     <div class="lifestyle-img reveal">
       <img src="images/beach-tropical.jpg" alt="Sunset on the beach" />
     </div>
-    <div class="lifestyle-img reveal d1">
+    <div class="lifestyle-img reveal">
       <img src="images/mezcal.jpg" alt="Mezcal cocktail" />
     </div>
-    <div class="lifestyle-img reveal d2">
+    <div class="lifestyle-img reveal">
       <img src="images/sunset-gold.jpg" alt="Golden sunset on the water" />
     </div>
   </div>
@@ -656,7 +658,7 @@
   <section id="projects" class="projects">
     <div class="projects-header">
       <h2 class="reveal">Projects</h2>
-      <div class="projects-header-right reveal d1">
+      <div class="projects-header-right reveal">
         <div class="year">(2023/2026)</div>
         <p class="desc">
           Delivered for agencies, healthcare<br/>
@@ -675,7 +677,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal d1">
+      <div class="project-card reveal">
         <div class="project-title">Healthcare Digital Build</div>
         <div class="project-sub">Healthcare / HIPAA</div>
         <div class="project-thumb">
@@ -691,7 +693,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal d2">
+      <div class="project-card reveal">
         <div class="project-title">Intelligence Platform</div>
         <div class="project-sub">SaaS / Internal Tool</div>
         <div class="project-thumb">
@@ -718,7 +720,7 @@
           </div>
         </div>
 
-        <div class="project-card reveal d1">
+        <div class="project-card reveal">
           <div class="project-title">Google Ads at Scale</div>
           <div class="project-sub">Performance / API</div>
           <div class="project-thumb">
@@ -736,7 +738,7 @@
       </div>
 
       <div class="featured-right">
-        <div class="project-card reveal d2">
+        <div class="project-card reveal">
           <div class="project-title">Browser Automation Suite</div>
           <div class="project-sub">DevTools / Infrastructure</div>
           <div class="project-thumb">
@@ -757,22 +759,25 @@
 
   <!-- Process -->
   <section id="process" class="process">
-    <div class="process-label reveal">How I work</div>
-    <div class="process-grid">
-      <div class="reveal">
-        <div class="process-num">01</div>
-        <div class="process-title">Scope and Map</div>
-        <p class="process-desc">Understand your business, your stack, and your bottlenecks. Map systems before writing code. No wasted cycles.</p>
-      </div>
-      <div class="reveal d1">
-        <div class="process-num">02</div>
-        <div class="process-title">Build and Ship</div>
-        <p class="process-desc">Working software, not decks. Daily updates, real deployments, documented decisions you can audit.</p>
-      </div>
-      <div class="reveal d2">
-        <div class="process-num">03</div>
-        <div class="process-title">Hand Off Clean</div>
-        <p class="process-desc">Full documentation, workflow exports, deployment guides. Your team runs everything without needing me. No lock-in.</p>
+    <div id="three-container"></div>
+    <div class="process-content">
+      <div class="process-label reveal">How I work</div>
+      <div class="process-grid">
+        <div class="reveal">
+          <div class="process-num">01</div>
+          <div class="process-title">Scope and Map</div>
+          <p class="process-desc">Understand your business, your stack, and your bottlenecks. Map systems before writing code. No wasted cycles.</p>
+        </div>
+        <div class="reveal">
+          <div class="process-num">02</div>
+          <div class="process-title">Build and Ship</div>
+          <p class="process-desc">Working software, not decks. Daily updates, real deployments, documented decisions you can audit.</p>
+        </div>
+        <div class="reveal">
+          <div class="process-num">03</div>
+          <div class="process-title">Hand Off Clean</div>
+          <p class="process-desc">Full documentation, workflow exports, deployment guides. Your team runs everything without needing me. No lock-in.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -785,19 +790,19 @@
         <div class="cap-name">GoHighLevel</div>
         <div class="cap-desc">Workflows, pipelines, tag automations, sub-account management, snapshot deployment, funnel logic, API integrations. 184 accounts deep.</div>
       </li>
-      <li class="cap-item reveal d1">
+      <li class="cap-item reveal">
         <div class="cap-name">AI Automation</div>
         <div class="cap-desc">Voice AI routing, agent deployment, workflow automation via Zapier, Make, and n8n. Custom scripting in Python and JavaScript. Prompt engineering.</div>
       </li>
-      <li class="cap-item reveal d2">
+      <li class="cap-item reveal">
         <div class="cap-name">Full-Stack Dev</div>
         <div class="cap-desc">Next.js, React, TypeScript, Tailwind CSS, Supabase, PostgreSQL, Vercel. API integrations, browser automation with Playwright.</div>
       </li>
-      <li class="cap-item reveal d3">
+      <li class="cap-item reveal">
         <div class="cap-name">Revenue Ops</div>
         <div class="cap-desc">Stripe billing logic, A2P 10DLC compliance, HIPAA-aware architecture, Google Ads management, Google Search Console, DNS.</div>
       </li>
-      <li class="cap-item reveal d4">
+      <li class="cap-item reveal">
         <div class="cap-name">Strategy</div>
         <div class="cap-desc">Brand positioning, competitive analysis, go-to-market planning, operational workflow mapping, launch roadmaps for pre-launch businesses.</div>
       </li>
@@ -809,36 +814,36 @@
     <div class="about-grid">
       <div class="about-left">
         <h2 class="reveal">Based on the<br/>coast. Built<br/>for remote.</h2>
-        <p class="reveal d1">Originally from Toronto, Canada. I relocated to Puerto Escondido on the Oaxacan coast to build Luxe Tide Studio. La Punta in the morning, Zicatela when the swell hits, and deep work in between.</p>
-        <p class="reveal d2">I work across North American time zones with agencies, startups, and solo operators who need real technical execution, not another proposal deck. If you need systems built, shipped, and documented, that's what I do.</p>
-        <div class="contact-details reveal d3">
-          <div class="contact-item">
+        <p class="reveal">Originally from Toronto, Canada. I relocated to Puerto Escondido on the Oaxacan coast to build Luxe Tide Studio. La Punta in the morning, Zicatela when the swell hits, and deep work in between.</p>
+        <p class="reveal">I work across North American time zones with agencies, startups, and solo operators who need real technical execution, not another proposal deck. If you need systems built, shipped, and documented, that's what I do.</p>
+        <div class="contact-details">
+          <div class="contact-item reveal">
             <div class="contact-item-label">Email</div>
             <div class="contact-item-val"><a href="mailto:ryan@luxetidestudio.com">ryan@luxetidestudio.com</a></div>
           </div>
-          <div class="contact-item">
+          <div class="contact-item reveal">
             <div class="contact-item-label">WhatsApp</div>
             <div class="contact-item-val"><a href="https://wa.me/16194166678">+1 619 416 6678</a></div>
           </div>
-          <div class="contact-item">
+          <div class="contact-item reveal">
             <div class="contact-item-label">Mobile (MX)</div>
             <div class="contact-item-val"><a href="tel:+529541772437">+52 954 177 2437</a></div>
           </div>
-          <div class="contact-item">
+          <div class="contact-item reveal">
             <div class="contact-item-label">Personal</div>
             <div class="contact-item-val"><a href="mailto:iamryanxmas@gmail.com">iamryanxmas@gmail.com</a></div>
           </div>
-          <div class="contact-item">
+          <div class="contact-item reveal">
             <div class="contact-item-label">Hometown</div>
             <div class="contact-item-val">Toronto, Canada</div>
           </div>
-          <div class="contact-item">
+          <div class="contact-item reveal">
             <div class="contact-item-label">Based</div>
             <div class="contact-item-val">Puerto Escondido, Oaxaca, MX</div>
           </div>
         </div>
       </div>
-      <div class="about-right reveal d2">
+      <div class="about-right reveal">
         <img src="images/ryan-portrait.jpg" alt="Ryan Christmas at sunset on Oaxaca beach" />
       </div>
     </div>
@@ -847,13 +852,13 @@
   <!-- CTA -->
   <section id="contact" class="cta">
     <h2 class="reveal">Let's build<br/>something.</h2>
-    <p class="cta-sub reveal d1">Open to contract work, agency partnerships, and retainer engagements.</p>
-    <div class="reveal d2">
+    <p class="cta-sub reveal">Open to contract work, agency partnerships, and retainer engagements.</p>
+    <div class="reveal">
       <a href="mailto:ryan@luxetidestudio.com" class="cta-btn">
         ryan@luxetidestudio.com <span class="arrow">&rarr;</span>
       </a>
     </div>
-    <div class="cta-links reveal d3">
+    <div class="cta-links reveal">
       <a href="https://github.com/nomadproin90days" target="_blank" rel="noopener">GitHub</a>
       <a href="https://linkedin.com/in/ryanxmas" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://wa.me/16194166678" target="_blank" rel="noopener">WhatsApp</a>
@@ -868,16 +873,58 @@
     </div>
   </footer>
 
-  <script>
-    window.addEventListener('load', () => {
-      document.body.classList.remove('page-enter');
-      document.body.classList.add('page-ready');
-    });
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@v0.149.0/build/three.module.js"
+    import { animate, inView, frame } from "https://cdn.jsdelivr.net/npm/motion@12.34.0/+esm"
 
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-    }, { threshold: 0.08, rootMargin: '-20px' });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    // 1. Motion Reveal System
+    inView(".reveal", ({ target }) => {
+      animate(
+        target,
+        { opacity: 1, y: [30, 0] },
+        { duration: 0.9, easing: [0.17, 0.55, 0.55, 1] }
+      )
+    })
+
+    // 2. Three.js Background for Process
+    const container = document.getElementById("three-container")
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000)
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    renderer.setSize(container.offsetWidth, container.offsetHeight)
+    renderer.setPixelRatio(window.devicePixelRatio)
+    container.appendChild(renderer.domElement)
+
+    const geometry = new THREE.IcosahedronGeometry(2, 1)
+    const material = new THREE.MeshPhongMaterial({ 
+      color: 0x111111, 
+      wireframe: true,
+      transparent: true,
+      opacity: 0.1
+    })
+    const sphere = new THREE.Mesh(geometry, material)
+    scene.add(sphere)
+
+    const light = new THREE.DirectionalLight(0xffffff, 1)
+    light.position.set(5, 5, 5)
+    scene.add(light)
+    scene.add(new THREE.AmbientLight(0x404040))
+
+    camera.position.z = 5
+
+    // Render loop using Motion's frame for sync
+    frame.render(() => {
+      sphere.rotation.y += 0.002
+      sphere.rotation.z += 0.001
+      renderer.render(scene, camera)
+    })
+
+    // Handle Resize
+    window.addEventListener('resize', () => {
+      camera.aspect = container.offsetWidth / container.offsetHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize(container.offsetWidth, container.offsetHeight)
+    })
   </script>
 
 </body>
