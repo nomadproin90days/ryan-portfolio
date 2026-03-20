@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Healthcare Digital Build - Ryan Christmas</title>
+  <meta name="description" content="HIPAA-compliant healthcare infrastructure for compounding pharmacies and infusion clinics. Full-stack build with Next.js, GoHighLevel, and automated prescription workflows." />
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=inter:300,400,500|space-grotesk:400,500,600,700" rel="stylesheet" />
+  <style>
+    :root { --bg: #ffffff; --text: #111111; --text-muted: #666666; --border: #eeeeee; --accent: #111111; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.04; pointer-events: none; z-index: 9999; }
+    ::selection { background: var(--text); color: var(--bg); }
+    img { display: block; width: 100%; height: auto; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(20px, 4vw, 56px); height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+    .nav-back { font-size: 13px; color: #888; text-decoration: none; transition: color 0.3s; }
+    .nav-back:hover { color: var(--text); }
+
+    .case-hero { padding: clamp(120px, 18vh, 220px) clamp(20px, 4vw, 56px) clamp(60px, 8vh, 100px); max-width: 1000px; margin: 0 auto; }
+    .case-hero .breadcrumb { font-size: 13px; color: #999; margin-bottom: 24px; }
+    .case-hero .breadcrumb a { color: #999; text-decoration: none; }
+    .case-hero .breadcrumb a:hover { color: var(--text); }
+    .case-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 7vw, 72px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.95; margin-bottom: 32px; }
+    .case-hero .lead { font-size: 18px; color: #555; line-height: 1.8; max-width: 700px; }
+
+    .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); max-width: 1000px; margin: 0 auto; }
+    .stat-cell { background: var(--bg); padding: 40px 32px; text-align: center; }
+    .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.04em; color: var(--text); }
+    .stat-label { font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; }
+
+    .case-section { padding: clamp(80px, 12vh, 160px) clamp(20px, 4vw, 56px); max-width: 1000px; margin: 0 auto; }
+    .case-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 32px; }
+    .case-section p { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 24px; }
+
+    .pipeline-flow { display: flex; gap: 0; margin: 48px 0; overflow-x: auto; }
+    .pipeline-stage { flex: 1; min-width: 140px; padding: 24px 16px; text-align: center; position: relative; border: 1px solid var(--border); border-radius: 12px; margin-right: -1px; }
+    .pipeline-stage:first-child { border-radius: 12px 0 0 12px; }
+    .pipeline-stage:last-child { border-radius: 0 12px 12px 0; }
+    .stage-num { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; color: #bbb; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .stage-name { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--text); }
+
+    .systems-list { list-style: none; margin: 40px 0; }
+    .systems-list li { display: grid; grid-template-columns: 280px 1fr; gap: 32px; padding: 32px 0; border-top: 1px solid var(--border); align-items: baseline; }
+    .sys-name { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; }
+    .sys-desc { font-size: 15px; color: #666; line-height: 1.7; }
+
+    .compliance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0; }
+    .compliance-card { border: 1px solid var(--border); border-radius: 12px; padding: 32px; }
+    .compliance-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+    .compliance-card p { font-size: 14px; color: #777; line-height: 1.7; margin-bottom: 0; }
+
+    .tech-pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 40px 0; }
+    .tech-pills span { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; padding: 8px 20px; border-radius: 100px; border: 1px solid var(--border); color: #666; }
+
+    .cta-section { text-align: center; padding: clamp(100px, 15vh, 200px) clamp(20px, 4vw, 56px); max-width: 1000px; margin: 0 auto; border-top: 1px solid var(--border); }
+    .cta-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -0.04em; margin-bottom: 20px; }
+    .cta-section p { font-size: 17px; color: #777; margin-bottom: 40px; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 12px; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; color: #fff; background: var(--text); padding: 20px 48px; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .cta-btn:hover { background: #000; transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.15); }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+
+    footer { padding: 40px clamp(20px, 4vw, 56px); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; }
+    footer span { font-size: 12px; color: #bbb; }
+    footer a { font-size: 12px; color: #bbb; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .pipeline-flow { flex-wrap: wrap; }
+      .pipeline-stage { min-width: calc(50% - 12px); margin-bottom: 8px; border-radius: 12px !important; }
+      .systems-list li { grid-template-columns: 1fr; gap: 8px; }
+      .compliance-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stats-bar { grid-template-columns: 1fr; }
+      .pipeline-stage { min-width: 100%; }
+    }
+  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23111111%22/></svg>">
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">Luxe Tide Studio</a>
+    <a href="index.html#projects" class="nav-back">&larr; Back to Projects</a>
+  </nav>
+
+  <section class="case-hero">
+    <div class="breadcrumb reveal"><a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / Healthcare</div>
+    <h1 class="reveal">Healthcare<br/>Digital Build</h1>
+    <p class="lead reveal">Full-stack infrastructure for a compounding pharmacy and infusion clinic in Maryland. HIPAA-compliant patient intake, prescription fulfillment pipelines, provider sales automation, and multi-language support - all built from scratch.</p>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-cell reveal">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Pipeline Stages</div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">B2B+B2C</div>
+      <div class="stat-label">Dual Pipeline</div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">HIPAA</div>
+      <div class="stat-label">Compliant</div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Languages</div>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <h2 class="reveal">The Problem</h2>
+    <p class="reveal">A compounding pharmacy operates as both a compounding pharmacy and an IV infusion clinic. They needed a system that could handle two completely different workflows: a B2B provider acquisition pipeline (selling to doctors) and a B2C patient fulfillment pipeline (processing prescriptions from intake to delivery). Everything had to be HIPAA-compliant, support multiple languages for their diverse patient base, and integrate with their existing pharmacy management system (Pioneer Rx).</p>
+  </section>
+
+  <section class="case-section" style="border-top: 1px solid var(--border);">
+    <h2 class="reveal">Prescription Journey</h2>
+    <p class="reveal">I designed and built an 8-stage prescription fulfillment pipeline that tracks every Rx from the moment it arrives to final delivery.</p>
+
+    <div class="pipeline-flow reveal">
+      <div class="pipeline-stage">
+        <div class="stage-num">Stage 1</div>
+        <div class="stage-name">Provider Acquisition</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">Stage 2</div>
+        <div class="stage-name">Rx Intake</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">Stage 3</div>
+        <div class="stage-name">Pharmacist Review</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">Stage 4</div>
+        <div class="stage-name">Payment & Consent</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">Stage 5</div>
+        <div class="stage-name">Compounding</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">Stage 6</div>
+        <div class="stage-name">Dispensing</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">Stage 7</div>
+        <div class="stage-name">Follow-up & Refills</div>
+      </div>
+      <div class="pipeline-stage">
+        <div class="stage-num">Stage 8</div>
+        <div class="stage-name">Fax Exception</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section" style="border-top: 1px solid var(--border);">
+    <h2 class="reveal">What I Built</h2>
+    <ul class="systems-list">
+      <li class="reveal">
+        <div class="sys-name">Patient Intake Portal</div>
+        <div class="sys-desc">Multi-language patient intake forms (English, Korean, Vietnamese) built in Next.js. Collects medical history, insurance info, and consent - all HIPAA-compliant with encrypted data handling.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">Provider B2B Sales Pipeline</div>
+        <div class="sys-desc">Lead to Portal Activated in 6 stages. NPI credentialing, contract signing, portal activation with SLA tracking. Automated onboarding sequences for new prescribers.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">Rx Fulfillment Pipeline</div>
+        <div class="sys-desc">From Rx Received to Complete. Pharmacist review gates, payment processing via webhooks, compounding SLAs for sterile vs non-sterile compounds, shipping with carrier tracking.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">Auto-Refill System</div>
+        <div class="sys-desc">Automated refill triggers based on days supply, remaining refills, and Rx expiration dates. Stops prompting when refills hit zero or prescriptions expire.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">GHL Automation Blueprint</div>
+        <div class="sys-desc">Complete GHL workflow architecture: 15+ custom fields per contact type, provider vs patient tag taxonomy, AI-powered call summaries, escalation SLAs, and legacy fax exception handling.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">Session Reporting</div>
+        <div class="sys-desc">Post-visit documentation system for infusion sessions. Clinical workflow tracking, session reports, and provider referral management.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">Payment & Webhook Infrastructure</div>
+        <div class="sys-desc">Payment processing webhooks, Pioneer Rx integration endpoints, promo code claiming and tracking APIs. All built with audit trails for HIPAA compliance.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">Cybersecurity Lockdown</div>
+        <div class="sys-desc">Full security audit and lockdown. Protection manifests, security libraries, and hardened infrastructure to meet healthcare compliance requirements.</div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="case-section" style="border-top: 1px solid var(--border);">
+    <h2 class="reveal">Compliance</h2>
+    <div class="compliance-grid">
+      <div class="compliance-card reveal">
+        <h3>HIPAA</h3>
+        <p>Patient data encrypted at rest and in transit. Consent tracking with signed dates. Audit trails on every data access. HIPAA-aware architecture from the ground up.</p>
+      </div>
+      <div class="compliance-card reveal">
+        <h3>Multi-Language</h3>
+        <p>Full localization system supporting English, Korean, and Vietnamese across all patient-facing pages: intake forms, session reports, referrals, and the patient hub.</p>
+      </div>
+      <div class="compliance-card reveal">
+        <h3>Payment Security</h3>
+        <p>Webhook-based payment processing with verification. Consent must be signed before payment triggers. Revenue analytics with payment date tracking.</p>
+      </div>
+      <div class="compliance-card reveal">
+        <h3>Data Protection</h3>
+        <p>Protection manifests, security libraries, and a full cybersecurity lockdown protocol. Every endpoint hardened against unauthorized access.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section" style="border-top: 1px solid var(--border);">
+    <h2 class="reveal">Tech Stack</h2>
+    <div class="tech-pills reveal">
+      <span>Next.js 16</span>
+      <span>React 19</span>
+      <span>TypeScript</span>
+      <span>Tailwind CSS 4</span>
+      <span>GoHighLevel</span>
+      <span>Pioneer Rx</span>
+      <span>Framer Motion</span>
+      <span>HIPAA</span>
+      <span>Webhooks</span>
+      <span>Lucide Icons</span>
+      <span>i18n / Localization</span>
+      <span>Schema.org (MedicalBusiness)</span>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2 class="reveal">Building in<br/>healthcare?</h2>
+    <p class="reveal">I build HIPAA-compliant systems for clinics, pharmacies, and healthcare startups that need real infrastructure, not templates.</p>
+    <div class="reveal">
+      <a href="https://link.luxetidestudio.com/widget/booking/ewffe" class="cta-btn" target="_blank">Book a Discovery Call <span>&rarr;</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Luxe Tide Studio</span>
+    <a href="index.html">Home</a>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

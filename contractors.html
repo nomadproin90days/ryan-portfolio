@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CRM Operations for Contractors - Ryan Christmas</title>
+  <meta name="description" content="How Ryan Christmas builds automated CRM systems for contractors — plumbers, roofers, HVAC, electricians, and more. 184 businesses managed at scale." />
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=inter:300,400,500|space-grotesk:400,500,600,700" rel="stylesheet" />
+  <style>
+    :root { --bg: #ffffff; --text: #111111; --text-muted: #666666; --border: #eeeeee; --accent: #111111; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.04; pointer-events: none; z-index: 9999; }
+    ::selection { background: var(--text); color: var(--bg); }
+    img { display: block; width: 100%; height: auto; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 clamp(20px, 4vw, 56px); height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.03); }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+    .nav-back { font-size: 13px; color: #888; text-decoration: none; transition: color 0.3s; }
+    .nav-back:hover { color: var(--text); }
+
+    .case-hero { padding: clamp(120px, 18vh, 220px) clamp(20px, 4vw, 56px) clamp(60px, 8vh, 100px); max-width: 1000px; margin: 0 auto; }
+    .case-hero .breadcrumb { font-size: 13px; color: #999; margin-bottom: 24px; }
+    .case-hero .breadcrumb a { color: #999; text-decoration: none; }
+    .case-hero .breadcrumb a:hover { color: var(--text); }
+    .case-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 7vw, 72px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.95; margin-bottom: 32px; }
+    .case-hero .lead { font-size: 18px; color: #555; line-height: 1.8; max-width: 700px; }
+
+    .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); max-width: 1000px; margin: 0 auto; }
+    .stat-cell { background: var(--bg); padding: 40px 32px; text-align: center; }
+    .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 5vw, 48px); font-weight: 700; letter-spacing: -0.04em; color: var(--text); }
+    .stat-label { font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; }
+
+    .case-section { padding: clamp(80px, 12vh, 160px) clamp(20px, 4vw, 56px); max-width: 1000px; margin: 0 auto; }
+    .case-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 32px; }
+    .case-section p { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 24px; }
+
+    .verticals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 48px 0; }
+    .vertical-card { border: 1px solid var(--border); border-radius: 12px; padding: 32px; transition: all 0.3s; }
+    .vertical-card:hover { border-color: #ccc; transform: translateY(-2px); }
+    .vertical-icon { font-size: 28px; margin-bottom: 16px; }
+    .vertical-name { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .vertical-desc { font-size: 14px; color: #777; line-height: 1.6; }
+
+    .systems-list { list-style: none; margin: 40px 0; }
+    .systems-list li { display: grid; grid-template-columns: 280px 1fr; gap: 32px; padding: 32px 0; border-top: 1px solid var(--border); align-items: baseline; }
+    .sys-name { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; }
+    .sys-desc { font-size: 15px; color: #666; line-height: 1.7; }
+
+    .tech-pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 40px 0; }
+    .tech-pills span { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; padding: 8px 20px; border-radius: 100px; border: 1px solid var(--border); color: #666; }
+
+    .cta-section { text-align: center; padding: clamp(100px, 15vh, 200px) clamp(20px, 4vw, 56px); max-width: 1000px; margin: 0 auto; border-top: 1px solid var(--border); }
+    .cta-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -0.04em; margin-bottom: 20px; }
+    .cta-section p { font-size: 17px; color: #777; margin-bottom: 40px; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 12px; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; color: #fff; background: var(--text); padding: 20px 48px; border-radius: 100px; text-decoration: none; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .cta-btn:hover { background: #000; transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.15); }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+
+    footer { padding: 40px clamp(20px, 4vw, 56px); border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; }
+    footer span { font-size: 12px; color: #bbb; }
+    footer a { font-size: 12px; color: #bbb; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .verticals-grid { grid-template-columns: 1fr; }
+      .systems-list li { grid-template-columns: 1fr; gap: 8px; }
+    }
+    @media (max-width: 480px) {
+      .stats-bar { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23111111%22/></svg>">
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">Luxe Tide Studio</a>
+    <a href="index.html#projects" class="nav-back">&larr; Back to Projects</a>
+  </nav>
+
+  <section class="case-hero">
+    <div class="breadcrumb reveal"><a href="index.html">Home</a> / <a href="index.html#projects">Projects</a> / CRM Operations</div>
+    <h1 class="reveal">CRM Operations<br/>for Contractors</h1>
+    <p class="lead reveal">I manage the full digital presence for 184 contractor businesses across the United States. Google Business Profiles, search console, ad campaigns, SMS compliance, and CRM automation - all running at scale through GoHighLevel.</p>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-cell reveal">
+      <div class="stat-num">184</div>
+      <div class="stat-label">Active Accounts</div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">800+</div>
+      <div class="stat-label">A2P Migrations</div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">17</div>
+      <div class="stat-label">Contractor Verticals</div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-num">3yr</div>
+      <div class="stat-label">Operating at Scale</div>
+    </div>
+  </div>
+
+  <section class="case-section">
+    <h2 class="reveal">Verticals I Work With</h2>
+    <p class="reveal">Every contractor vertical has different needs. A roofer's lead follow-up is different from a dentist's recall system. I build automation specific to how each trade actually operates.</p>
+
+    <div class="verticals-grid">
+      <div class="vertical-card reveal">
+        <div class="vertical-icon">🔧</div>
+        <div class="vertical-name">Plumbers</div>
+        <div class="vertical-desc">Emergency dispatch automation, missed-call text-back, review requests after service calls, seasonal maintenance reminders.</div>
+      </div>
+      <div class="vertical-card reveal">
+        <div class="vertical-icon">🏠</div>
+        <div class="vertical-name">Roofers</div>
+        <div class="vertical-desc">Storm response campaigns, estimate follow-up sequences, before/after photo collection, insurance claim coordination.</div>
+      </div>
+      <div class="vertical-card reveal">
+        <div class="vertical-icon">❄️</div>
+        <div class="vertical-name">HVAC</div>
+        <div class="vertical-desc">Seasonal tune-up campaigns, quote follow-ups, maintenance plan renewals, after-hours emergency routing.</div>
+      </div>
+      <div class="vertical-card reveal">
+        <div class="vertical-icon">⚡</div>
+        <div class="vertical-name">Electricians</div>
+        <div class="vertical-desc">Service area targeting, commercial vs residential routing, permit tracking reminders, safety inspection follow-ups.</div>
+      </div>
+      <div class="vertical-card reveal">
+        <div class="vertical-icon">🏗️</div>
+        <div class="vertical-name">General Contractors</div>
+        <div class="vertical-desc">Project pipeline management, subcontractor coordination, milestone billing automation, client update sequences.</div>
+      </div>
+      <div class="vertical-card reveal">
+        <div class="vertical-icon">🌿</div>
+        <div class="vertical-name">Landscapers</div>
+        <div class="vertical-desc">Seasonal service activation, recurring schedule management, weather-triggered campaigns, referral programs.</div>
+      </div>
+      <div class="vertical-card reveal">
+        <div class="vertical-icon">🎨</div>
+        <div class="vertical-name">Painters</div>
+        <div class="vertical-desc">Estimate scheduling automation, color consultation follow-ups, project gallery collection, warranty reminders.</div>
+      </div>
+      <div class="vertical-card reveal">
+        <div class="vertical-icon">🐛</div>
+        <div class="vertical-name">Pest Control</div>
+        <div class="vertical-desc">Quarterly treatment reminders, seasonal pest alerts, inspection scheduling, service plan renewals.</div>
+      </div>
+      <div class="vertical-card reveal">
+        <div class="vertical-icon">🚪</div>
+        <div class="vertical-name">Garage Door / Fencing</div>
+        <div class="vertical-desc">Emergency repair routing, quote follow-up automation, warranty tracking, neighborhood marketing campaigns.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-section" style="border-top: 1px solid var(--border);">
+    <h2 class="reveal">What I Build for Each Client</h2>
+    <ul class="systems-list">
+      <li class="reveal">
+        <div class="sys-name">Google Business Profile</div>
+        <div class="sys-desc">Full GBP optimization, verification, suspension recovery, photo management, and review response automation. Managed via custom Playwright browser automation where Google's API doesn't reach.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">Google Search Console</div>
+        <div class="sys-desc">Property verification, sitemap submission, indexing monitoring, and search performance tracking across all 184 accounts.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">Google Ads Campaigns</div>
+        <div class="sys-desc">Portfolio-wide campaign setup and management via the Google Ads API. Automated campaign creation at day 31 of each client's lifecycle with pre-flight checks and ad copy generation.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">GoHighLevel CRM</div>
+        <div class="sys-desc">Workflows, pipelines, tag automations, missed-call text-back, review request sequences, nurture campaigns, and cold outreach. Every client gets a fully automated sales pipeline from lead to close.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">A2P 10DLC Compliance</div>
+        <div class="sys-desc">Migrated 800+ sub-accounts through A2P registration, including the emergency migration from GHL to SignalHouse when the agency's A2P access was shut down.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">Browser Automation</div>
+        <div class="sys-desc">Custom Playwright scripts that automate GBP Manager, Google Search Console, and GHL at scale. Handling operations that have no API, across hundreds of accounts simultaneously.</div>
+      </li>
+      <li class="reveal">
+        <div class="sys-name">AI Voice Agents</div>
+        <div class="sys-desc">Voice AI routing and deployment for inbound call handling, Q&A extraction, and automated call summaries. Connected to GHL workflows for seamless follow-up.</div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="case-section" style="border-top: 1px solid var(--border);">
+    <h2 class="reveal">Tech Stack</h2>
+    <div class="tech-pills reveal">
+      <span>GoHighLevel</span>
+      <span>Google Ads API</span>
+      <span>Google Business Profile</span>
+      <span>Google Search Console</span>
+      <span>Playwright</span>
+      <span>Python</span>
+      <span>Supabase</span>
+      <span>PostgreSQL</span>
+      <span>Next.js</span>
+      <span>A2P 10DLC</span>
+      <span>SignalHouse</span>
+      <span>Voice AI</span>
+      <span>n8n</span>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2 class="reveal">Need this for<br/>your business?</h2>
+    <p class="reveal">I build the same systems for contractors who want to stop losing leads and start running on autopilot.</p>
+    <div class="reveal">
+      <a href="https://link.luxetidestudio.com/widget/booking/ewffe" class="cta-btn" target="_blank">Book a Discovery Call <span>&rarr;</span></a>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Luxe Tide Studio</span>
+    <a href="index.html">Home</a>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
