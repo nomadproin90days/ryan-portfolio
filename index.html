@@ -58,7 +58,7 @@
     .nav-right { display: flex; align-items: center; gap: 32px; }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a {
-      font-size: 13px; font-weight: 400; color: #888;
+      font-size: 13px; font-weight: 400; color: #666;
       text-decoration: none; transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       letter-spacing: 0.01em;
     }
@@ -70,6 +70,14 @@
       letter-spacing: 0.01em;
     }
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer; padding: 8px;
+      flex-direction: column; gap: 5px; z-index: 101;
+    }
+    .hamburger span {
+      display: block; width: 20px; height: 2px; background: var(--text);
+      transition: all 0.3s;
+    }
 
     /* ---- Hero ---- */
     .hero {
@@ -148,7 +156,7 @@
     .info-cell:hover { background: #fafafa; }
     .info-label {
       font-size: 10px; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.15em; color: #aaa; margin-bottom: 8px;
+      letter-spacing: 0.15em; color: #767676; margin-bottom: 8px;
     }
     .info-val {
       font-size: 14px; font-weight: 400; color: var(--text);
@@ -183,25 +191,36 @@
       font-size: 17px; color: #555; line-height: 1.8;
     }
 
-    /* ---- Lifestyle Strip ---- */
-    .lifestyle-strip {
+    /* ---- Results Strip ---- */
+    .results-strip {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
-      padding: 0 clamp(20px, 4vw, 56px);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      padding: 0;
       max-width: 1400px; margin: 0 auto;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
-    .lifestyle-img {
-      border-radius: 12px;
-      overflow: hidden;
-      height: clamp(220px, 30vw, 400px);
+    .result-cell {
+      background: var(--bg);
+      padding: 48px 32px;
+      text-align: center;
     }
-    .lifestyle-img img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    .result-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 8px;
     }
-    .lifestyle-img:hover img { transform: scale(1.05); }
+    .result-label {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
 
     /* ---- Marquee ---- */
     .marquee-section {
@@ -225,7 +244,7 @@
     }
     .marquee-track span {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px; font-weight: 500; color: #ddd;
+      font-size: 14px; font-weight: 500; color: #999;
       white-space: nowrap; text-transform: uppercase; letter-spacing: 0.05em;
     }
     @keyframes marquee {
@@ -280,7 +299,7 @@
       color: var(--text); margin-bottom: 6px;
     }
     .project-sub {
-      font-size: 13px; color: #999; margin-bottom: 16px;
+      font-size: 13px; color: #767676; margin-bottom: 16px;
     }
     .project-thumb {
       width: 100%; aspect-ratio: 4/5;
@@ -355,7 +374,7 @@
     .process-content { position: relative; z-index: 1; }
     .process-label {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 13px; font-weight: 600; color: #999;
+      font-size: 13px; font-weight: 600; color: #767676;
       text-transform: uppercase; letter-spacing: 0.15em;
       margin-bottom: 64px;
     }
@@ -364,7 +383,7 @@
     }
     .process-num {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 72px; font-weight: 700; color: #f5f5f5;
+      font-size: 72px; font-weight: 700; color: #eee;
       line-height: 1; margin-bottom: 24px;
       letter-spacing: -0.04em;
     }
@@ -373,7 +392,7 @@
       font-size: 20px; font-weight: 600; color: var(--text);
       margin-bottom: 12px; letter-spacing: -0.01em;
     }
-    .process-desc { font-size: 15px; color: #777; line-height: 1.75; }
+    .process-desc { font-size: 15px; color: #555; line-height: 1.75; }
 
     /* ---- Capabilities ---- */
     .capabilities {
@@ -383,7 +402,7 @@
     }
     .cap-label {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 13px; font-weight: 600; color: #999;
+      font-size: 13px; font-weight: 600; color: #767676;
       text-transform: uppercase; letter-spacing: 0.15em;
       margin-bottom: 64px;
     }
@@ -401,7 +420,7 @@
       font-family: 'Space Grotesk', sans-serif;
       font-size: 18px; font-weight: 600; color: var(--text);
     }
-    .cap-desc { font-size: 15px; color: #777; line-height: 1.75; }
+    .cap-desc { font-size: 15px; color: #555; line-height: 1.75; }
 
     /* ---- About / Personal ---- */
     .about {
@@ -451,7 +470,7 @@
     }
     .contact-item-label {
       font-size: 10px; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.15em; color: #bbb; margin-bottom: 8px;
+      letter-spacing: 0.15em; color: #767676; margin-bottom: 8px;
     }
     .contact-item-val {
       font-size: 15px; color: var(--text);
@@ -479,7 +498,7 @@
       margin-bottom: 32px;
     }
     .cta-sub {
-      font-size: 17px; color: #777; line-height: 1.7;
+      font-size: 17px; color: #555; line-height: 1.7;
       max-width: 500px; margin: 0 auto 56px;
     }
     .cta-btn {
@@ -506,7 +525,7 @@
       display: flex; gap: 32px; justify-content: center;
     }
     .cta-links a {
-      font-size: 14px; color: #aaa; text-decoration: none;
+      font-size: 14px; color: #767676; text-decoration: none;
       transition: color 0.3s;
     }
     .cta-links a:hover { color: var(--text); }
@@ -518,10 +537,10 @@
       display: flex; justify-content: space-between; align-items: center;
       max-width: 1400px; margin: 0 auto;
     }
-    footer span { font-size: 12px; color: #bbb; }
+    footer span { font-size: 12px; color: #767676; }
     footer .links { display: flex; gap: 24px; }
     footer .links a {
-      font-size: 12px; color: #bbb; text-decoration: none;
+      font-size: 12px; color: #767676; text-decoration: none;
       transition: color 0.3s;
     }
     footer .links a:hover { color: var(--text); }
@@ -549,12 +568,14 @@
       .featured-left { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr; gap: 48px; }
       .studio-grid { grid-template-columns: 1fr; gap: 32px; }
-      .lifestyle-strip { grid-template-columns: 1fr 1fr; }
-      .lifestyle-strip .lifestyle-img:last-child { display: none; }
+      .results-strip { grid-template-columns: 1fr 1fr; }
       .info-bar { grid-template-columns: 1fr 1fr; }
       .cap-item { grid-template-columns: 1fr; gap: 12px; }
       .contact-details { grid-template-columns: 1fr; gap: 0; }
-      .nav-links { display: none; }
+      .nav-links { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); flex-direction: column; padding: 24px clamp(20px, 4vw, 56px); gap: 20px; border-bottom: 1px solid var(--border); z-index: 99; }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 16px; }
+      .hamburger { display: flex; }
     }
     @media (max-width: 480px) {
       .info-bar { grid-template-columns: 1fr; }
@@ -579,6 +600,9 @@
         <li><a href="#about">About</a></li>
       </ul>
       <a href="#contact" class="nav-cta">Get in touch</a>
+      <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -629,16 +653,23 @@
     </div>
   </section>
 
-  <!-- Lifestyle Strip -->
-  <div class="lifestyle-strip">
-    <div class="lifestyle-img reveal">
-      <img src="images/beach-tropical.jpg" alt="Sunset on the beach" />
+  <!-- Results Strip -->
+  <div class="results-strip">
+    <div class="result-cell reveal">
+      <div class="result-num">184</div>
+      <div class="result-label">Contractor businesses managed</div>
     </div>
-    <div class="lifestyle-img reveal">
-      <img src="images/mezcal.jpg" alt="Mezcal cocktail" />
+    <div class="result-cell reveal">
+      <div class="result-num">800+</div>
+      <div class="result-label">SMS compliance migrations</div>
     </div>
-    <div class="lifestyle-img reveal">
-      <img src="images/sunset-gold.jpg" alt="Golden sunset on the water" />
+    <div class="result-cell reveal">
+      <div class="result-num">&lt;48hr</div>
+      <div class="result-label">Onboarding time (down from 7 days)</div>
+    </div>
+    <div class="result-cell reveal">
+      <div class="result-num">99.9%</div>
+      <div class="result-label">System uptime across portfolio</div>
     </div>
   </div>
 
@@ -695,8 +726,8 @@
         </div>
       </a>
 
-      <div class="project-card reveal">
-        <div class="project-title">Intelligence Platform</div>
+      <div class="project-card reveal" style="opacity: 0.6; pointer-events: none;">
+        <div class="project-title">Intelligence Platform <span style="font-size:12px; font-weight:400; color:#767676; background:#f5f5f5; padding:3px 10px; border-radius:100px; margin-left:8px; vertical-align:middle;">Case study soon</span></div>
         <div class="project-sub">SaaS / Internal Tool</div>
         <div class="project-thumb">
           <img src="images/surf-silhouette.jpg" alt="Underwater ocean" style="filter: brightness(0.8) saturate(0.7);" />
@@ -706,8 +737,8 @@
 
     <div class="projects-featured">
       <div class="featured-left">
-        <div class="project-card reveal">
-          <div class="project-title">A2P Migration</div>
+        <div class="project-card reveal" style="opacity: 0.6; pointer-events: none;">
+          <div class="project-title">A2P Migration <span style="font-size:12px; font-weight:400; color:#767676; background:#f5f5f5; padding:3px 10px; border-radius:100px; margin-left:8px; vertical-align:middle;">Case study soon</span></div>
           <div class="project-sub">Compliance / 800+ Accounts</div>
           <div class="project-thumb">
             <img src="images/ocean-dark.jpg" alt="A2P migration background" class="project-thumb-bg" />
@@ -722,8 +753,8 @@
           </div>
         </div>
 
-        <div class="project-card reveal">
-          <div class="project-title">Google Ads at Scale</div>
+        <div class="project-card reveal" style="opacity: 0.6; pointer-events: none;">
+          <div class="project-title">Google Ads at Scale <span style="font-size:12px; font-weight:400; color:#767676; background:#f5f5f5; padding:3px 10px; border-radius:100px; margin-left:8px; vertical-align:middle;">Case study soon</span></div>
           <div class="project-sub">Performance / API</div>
           <div class="project-thumb">
             <img src="images/sunset-gold.jpg" alt="Google ads at scale background" class="project-thumb-bg" style="filter: brightness(0.4) saturate(0.5);" />
@@ -740,8 +771,8 @@
       </div>
 
       <div class="featured-right">
-        <div class="project-card reveal">
-          <div class="project-title">Browser Automation Suite</div>
+        <div class="project-card reveal" style="opacity: 0.6; pointer-events: none;">
+          <div class="project-title">Browser Automation Suite <span style="font-size:12px; font-weight:400; color:#767676; background:#f5f5f5; padding:3px 10px; border-radius:100px; margin-left:8px; vertical-align:middle;">Case study soon</span></div>
           <div class="project-sub">DevTools / Infrastructure</div>
           <div class="project-thumb">
             <img src="images/mezcal.jpg" alt="Browser automation background" class="project-thumb-bg" style="filter: brightness(0.3) saturate(0.6);" />
@@ -856,14 +887,15 @@
     <h2 class="reveal">Let's build<br/>something.</h2>
     <p class="cta-sub reveal">Open to contract work, agency partnerships, and retainer engagements.</p>
     <div class="reveal">
-      <a href="mailto:ryan@luxetidestudio.com" class="cta-btn">
-        ryan@luxetidestudio.com <span class="arrow">&rarr;</span>
+      <a href="https://link.luxetidestudio.com/widget/booking/ewffe" class="cta-btn" target="_blank">
+        Book a Discovery Call <span class="arrow">&rarr;</span>
       </a>
     </div>
     <div class="cta-links reveal">
-      <a href="https://github.com/nomadproin90days" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://linkedin.com/in/ryanxmas" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:ryan@luxetidestudio.com">ryan@luxetidestudio.com</a>
       <a href="https://wa.me/16194166678" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://linkedin.com/in/ryanxmas" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/nomadproin90days" target="_blank" rel="noopener">GitHub</a>
     </div>
   </section>
 
