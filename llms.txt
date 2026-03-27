@@ -1,0 +1,33 @@
+# Luxe Tide Studio
+
+> Luxe Tide Studio is a technical automation studio founded by Ryan Christmas,
+> specializing in CRM automation, AI workflows, and full-stack development
+> for agencies and startups.
+
+## Key Facts
+- Founded by Ryan Christmas, based in Puerto Escondido, Oaxaca, Mexico
+- Manages CRM operations for 184 contractor businesses via GoHighLevel
+- Completed 800+ SMS compliance (A2P 10DLC) migrations
+- Reduced client onboarding time from 7 days to under 48 hours
+- Maintains 99.9% system uptime across managed portfolio
+
+## Services
+- GoHighLevel CRM automation and sub-account management
+- AI workflow automation (Voice AI, n8n, Zapier, Make)
+- Full-stack web development (Next.js, React, TypeScript, Supabase)
+- A2P 10DLC and HIPAA compliance architecture
+- Google Ads API management at portfolio scale
+- Revenue operations (Stripe billing, DNS, compliance)
+- Strategy consulting (brand positioning, go-to-market, launch roadmaps)
+
+## Tech Stack
+GoHighLevel, Next.js, React, TypeScript, Tailwind CSS, Supabase, PostgreSQL,
+Vercel, Voice AI, n8n, Google Ads API, Stripe, Playwright, Python
+
+## Contact
+- Email: ryan@luxetidestudio.com
+- WhatsApp: +1 619 416 6678
+- Website: https://luxetidestudio.com
+- LinkedIn: https://linkedin.com/in/ryanxmas
+- GitHub: https://github.com/nomadproin90days
+- Booking: https://link.luxetidestudio.com/widget/booking/ewffe
