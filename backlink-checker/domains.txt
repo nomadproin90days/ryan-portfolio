@@ -1,0 +1,3 @@
+# Test domains - replace with client domains
+threadstomillions.com
+nomadproin90days.com

@@ -1,0 +1,55 @@
+{
+  "repo_info": {
+    "name": "website-builder-setup",
+    "full_name": "tenfoldmarc/website-builder-setup",
+    "description": "Build professional animated websites with Claude Code — no coding needed. One install, three tools: UI/UX Pro Max + Framer Motion + 21st.dev. By @tenfoldmarc",
+    "url": "https://github.com/tenfoldmarc/website-builder-setup",
+    "homepage": null,
+    "stars": 4,
+    "forks": 1,
+    "open_issues": 1,
+    "default_branch": "main",
+    "created_at": "2026-03-18T18:19:38+00:00",
+    "updated_at": "2026-03-19T11:50:58+00:00",
+    "language": null,
+    "license": null,
+    "topics": []
+  },
+  "readme": "# Website Builder Setup for Claude Code\n\nBuild professional, animated websites with Claude Code — no coding experience needed. This skill installs three tools that turn Claude into a full web design studio.\n\nBuilt by [@tenfoldmarc](https://instagram.com/tenfoldmarc)\n\n## Install\n\nRun this in your terminal:\n\n```bash\nclaude install-skill https://github.com/tenfoldmarc/website-builder-setup\n```\n\nThen type `/website-builder-setup` and Claude walks you through everything.\n\n## What Gets Installed\n\n| Tool | What it does |\n|------|-------------|\n| **UI/UX Pro Max** | 50+ design styles, 161 color palettes, 57 font pairings. Your sites look designed, not AI-generated. |\n| **Framer Motion** | Smooth animations — page transitions, hover effects, scroll reveals. The difference between a $500 site and a $10,000 site. |\n| **21st.dev Magic** | 100+ production-ready React components. Buttons, navbars, hero sections, cards, footers — all pre-designed. |\n\n## Requirements\n\n- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed\n- [Node.js](https://nodejs.org) (LTS version)\n\n## After Setup\n\nJust tell Claude what you want:\n\n```\nBuild me a landing page for my consulting business targeting small business owners.\nDark theme, modern, with animations.\n```\n\nClaude handles the rest — design, layout, animations, responsive, everything.\n",
+  "file_tree": [
+    {
+      "path": "README.md",
+      "type": "file",
+      "size": 1353
+    },
+    {
+      "path": "website-builder-setup",
+      "type": "dir",
+      "size": null
+    },
+    {
+      "path": "website-builder-setup/SKILL.md",
+      "type": "file",
+      "size": 5131
+    }
+  ],
+  "languages": {},
+  "signatures": [],
+  "test_examples": [],
+  "issues": [
+    {
+      "number": 1,
+      "title": "issue in installing",
+      "state": "open",
+      "labels": [],
+      "milestone": null,
+      "created_at": "2026-03-19T06:54:12+00:00",
+      "updated_at": "2026-03-19T06:58:11+00:00",
+      "closed_at": null,
+      "url": "https://github.com/tenfoldmarc/website-builder-setup/issues/1",
+      "body": "Hi,\n\nI tried setting this up by following the instructions in the repo, but I ran into an issue.\n\nWhen I run:\nclaude install-skill https://github.com/tenfoldmarc/website-builder-setup\n\nI get an error saying that `install-skill` is not a valid Claude Code command. It mentions that Claude Code doesn’t support installing skills from GitHub URLs.\n\nI also tried running it inside Claude Code, but it still says the command doesn’t exist.\n\nFrom what I can see, my Claude Code only supports commands like:"
+    }
+  ],
+  "changelog": "",
+  "releases": []
+}

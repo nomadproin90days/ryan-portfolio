@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Martin Dental Studio",
+    "vertical": "dentist",
+    "search_city": "Nashville, TN",
+    "category": "Dentist",
+    "address": "505 Myatt Dr, Madison, TN 37115",
+    "city": "Madison",
+    "state": "Tennessee",
+    "postal_code": "37115",
+    "phone": "(629) 306-9468",
+    "website": "https://www.martindentalstudiotn.com/",
+    "rating": 4.9,
+    "review_count": 255,
+    "place_id": "ChIJI9SZ27xDZIgRJToQayd-A8g",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Martin%20Dental%20Studio&query_place_id=ChIJI9SZ27xDZIgRJToQayd-A8g",
+    "permanently_closed": false,
+    "claim_this_business": false,
+    "scraped_at": "2026-03-19T03:19:27.063Z",
+    "score": 73,
+    "score_reasons": [
+      "Has website \u2014 check for automation gaps",
+      "Established (255 reviews) \u2014 has budget for services",
+      "High-value vertical (dentist): +8"
+    ]
+  },
+  {
+    "name": "Madison Family Dental",
+    "vertical": "dentist",
+    "search_city": "Nashville, TN",
+    "category": "Dentist",
+    "address": "231A W Old Hickory Blvd, Madison, TN 37115",
+    "city": "Madison",
+    "state": "Tennessee",
+    "postal_code": "37115",
+    "phone": "(615) 865-5750",
+    "website": "http://www.madisonsmiles.com/",
+    "rating": 4.9,
+    "review_count": 764,
+    "place_id": "ChIJqRF6ox1DZIgRfpKyh3Zukjw",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Madison%20Family%20Dental&query_place_id=ChIJqRF6ox1DZIgRfpKyh3Zukjw",
+    "permanently_closed": false,
+    "claim_this_business": false,
+    "scraped_at": "2026-03-19T03:19:27.061Z",
+    "score": 68,
+    "score_reasons": [
+      "Has website \u2014 check for automation gaps",
+      "Dominant (764 reviews) \u2014 may already have systems",
+      "High-value vertical (dentist): +8"
+    ]
+  },
+  {
+    "name": "Greenwood Local Dentistry and Orthodontics",
+    "vertical": "dentist",
+    "search_city": "Nashville, TN",
+    "category": "Dentist",
+    "address": "1112 Gallatin Ave, Nashville, TN 37206",
+    "city": "Nashville",
+    "state": "Tennessee",
+    "postal_code": "37206",
+    "phone": "(615) 761-9015",
+    "website": "https://greenwoodlocal.com/",
+    "rating": 4.9,
+    "review_count": 413,
+    "place_id": "ChIJ7_h3IHlnZIgRtZ_DrvcsbaM",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Greenwood%20Local%20Dentistry%20and%20Orthodontics&query_place_id=ChIJ7_h3IHlnZIgRtZ_DrvcsbaM",
+    "permanently_closed": false,
+    "claim_this_business": false,
+    "scraped_at": "2026-03-19T03:19:27.063Z",
+    "score": 68,
+    "score_reasons": [
+      "Has website \u2014 check for automation gaps",
+      "Dominant (413 reviews) \u2014 may already have systems",
+      "High-value vertical (dentist): +8"
+    ]
+  }
+]
