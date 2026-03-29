@@ -54,7 +54,7 @@ export default function Transcriber() {
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "Any",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "featureList": "Instagram transcription, TikTok transcription, YouTube transcription, Twitter/X transcription, batch transcription, video to text, AI-powered, no signup required",
+      "featureList": "Instagram transcription, TikTok transcription, YouTube transcription, Twitter/X transcription, video to text, AI-powered, no signup required, privacy-first",
       "creator": { "@type": "Organization", "name": "Luxetide Studio", "url": "https://luxetidestudio.com" },
     },
   });
@@ -65,9 +65,7 @@ export default function Transcriber() {
   const [error, setError] = useState("");
   const [result, setResult] = useState<JobResult | null>(null);
   const [view, setView] = useState<"segments" | "full">("segments");
-  const [tab, setTab] = useState<"single" | "batch" | "upload">("single");
-  const [batchUrls, setBatchUrls] = useState("");
-  const [batchResults, setBatchResults] = useState<JobResult[]>([]);
+  const [tab, setTab] = useState<"single" | "upload">("single");
   const fileRef = useRef<HTMLInputElement>(null);
 
   const pollJob = (jobId: string): Promise<JobResult> => {
@@ -99,25 +97,6 @@ export default function Transcriber() {
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     } finally { setLoading(false); setStatus(""); }
-  };
-
-  const transcribeBatch = async () => {
-    const urls = batchUrls.split("\n").map(u => u.trim()).filter(Boolean);
-    if (!urls.length) return;
-    setError(""); setBatchResults([]);
-    try {
-      const res = await fetch(`${API}/api/transcribe/batch`, {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ urls }),
-      });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
-      data.jobs.forEach((j: { job_id: string }) => {
-        pollJob(j.job_id).then(job => {
-          setBatchResults(prev => [...prev, job]);
-        }).catch(() => {});
-      });
-    } catch (err: any) { setError(err.message); }
   };
 
   const handleUpload = async (file: File) => {
@@ -188,10 +167,10 @@ export default function Transcriber() {
       <div className="max-w-4xl mx-auto px-5 pb-20">
         {/* Tabs */}
         <div className="flex gap-1 justify-center mb-6 bg-muted rounded-full p-1 border border-border max-w-md mx-auto">
-          {(["single", "batch", "upload"] as const).map(t => (
+          {(["single", "upload"] as const).map(t => (
             <button key={t} onClick={() => setTab(t)}
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${tab === t ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}>
-              {t === "single" ? "Single Video" : t === "batch" ? "Batch Mode" : "Upload"}
+              {t === "single" ? "Single Video" : "Upload"}
             </button>
           ))}
         </div>
@@ -286,31 +265,6 @@ export default function Transcriber() {
                 </div>
               </div>
             )}
-          </div>
-        )}
-
-        {/* Batch */}
-        {tab === "batch" && (
-          <div>
-            <div className="border border-border rounded-xl p-5 mb-4">
-              <textarea value={batchUrls} onChange={e => setBatchUrls(e.target.value)}
-                placeholder={"Paste one URL per line...\n\nhttps://www.instagram.com/reel/...\nhttps://www.tiktok.com/@user/video/..."}
-                className="w-full min-h-[150px] px-4 py-3 rounded-xl border border-border bg-muted text-foreground text-sm font-mono outline-none focus:border-foreground transition-colors resize-y placeholder:text-muted-foreground/50" />
-              <p className="text-xs text-muted-foreground mt-2 mb-3">One URL per line. Up to 20 videos at a time.</p>
-              <button onClick={transcribeBatch}
-                className="px-7 py-3.5 rounded-full bg-foreground text-background font-semibold text-sm hover:-translate-y-0.5 hover:shadow-lg transition-all">
-                Transcribe All
-              </button>
-            </div>
-            {error && <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm mb-4">{error}</div>}
-            <div className="space-y-3">
-              {batchResults.map((job, i) => (
-                <div key={i} className="border border-border rounded-xl p-4">
-                  <p className="text-sm font-semibold mb-1">{job.video_info?.title}</p>
-                  <p className="text-sm text-muted-foreground whitespace-pre-wrap max-h-[200px] overflow-y-auto">{job.result?.full_text}</p>
-                </div>
-              ))}
-            </div>
           </div>
         )}
 
