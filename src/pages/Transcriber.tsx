@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "motion/react";
+import useHead from "../hooks/useHead";
 
 const API = "https://iamryanxmas-transcriber.hf.space";
 
@@ -38,6 +39,26 @@ function formatDuration(s: number) {
 }
 
 export default function Transcriber() {
+  useHead({
+    title: "Free Social Media Video Transcription Tool | Luxetide Studio",
+    description: "Transcribe videos from Instagram, TikTok, YouTube, Twitter & more. Free, unlimited, no account required. AI-powered video to text in seconds.",
+    canonical: "https://luxetidestudio.com/transcriber",
+    ogTitle: "Free Social Media Transcript Generator",
+    ogDescription: "Paste any video URL — get a full transcript in seconds. Free, unlimited, no signup. Powered by local Whisper AI.",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Luxetide Studio Transcriber",
+      "url": "https://luxetidestudio.com/transcriber",
+      "description": "Free AI-powered social media video transcription tool. Supports Instagram Reels, TikTok, YouTube Shorts, Twitter/X, Facebook, and LinkedIn.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": "Instagram transcription, TikTok transcription, YouTube transcription, Twitter/X transcription, batch transcription, video to text, AI-powered, no signup required",
+      "creator": { "@type": "Organization", "name": "Luxetide Studio", "url": "https://luxetidestudio.com" },
+    },
+  });
+
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");

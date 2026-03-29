@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "motion/react";
+import useHead from "../hooks/useHead";
 
 const API = "https://iamryanxmas-transcriber.hf.space";
 
@@ -38,6 +39,22 @@ function formatDuration(s: number) {
 }
 
 export default function TikTokTranscriber() {
+  useHead({
+    title: "Free TikTok Video Transcript Generator | Luxetide Studio",
+    description: "Transcribe TikTok videos to text instantly. Free, unlimited, no account required. AI-powered TikTok video to text converter.",
+    canonical: "https://luxetidestudio.com/tiktok-transcript",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "TikTok Transcript Generator",
+      "url": "https://luxetidestudio.com/tiktok-transcript",
+      "description": "Free AI-powered TikTok video transcription tool. Paste any TikTok URL and get accurate text in seconds.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    },
+  });
+
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");

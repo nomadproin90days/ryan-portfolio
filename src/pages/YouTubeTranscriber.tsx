@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "motion/react";
+import useHead from "../hooks/useHead";
 
 const API = "https://iamryanxmas-transcriber.hf.space";
 
@@ -38,6 +39,22 @@ function formatDuration(s: number) {
 }
 
 export default function YouTubeTranscriber() {
+  useHead({
+    title: "Free YouTube Video & Shorts Transcript Generator | Luxetide Studio",
+    description: "Transcribe YouTube videos and Shorts to text instantly. Free, unlimited, no account required. AI-powered YouTube video to text converter.",
+    canonical: "https://luxetidestudio.com/youtube-transcript",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "YouTube Transcript Generator",
+      "url": "https://luxetidestudio.com/youtube-transcript",
+      "description": "Free AI-powered YouTube video and Shorts transcription tool. Paste any YouTube URL and get accurate text in seconds.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    },
+  });
+
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
