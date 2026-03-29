@@ -1,5 +1,8 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/((?!assets|images|llms\\.txt|robots\\.txt|sitemap\\.xml).*)", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
