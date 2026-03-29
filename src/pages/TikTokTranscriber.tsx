@@ -37,7 +37,7 @@ function formatDuration(s: number) {
   return `${m}:${sec.toString().padStart(2, "0")}`;
 }
 
-export default function Transcriber() {
+export default function TikTokTranscriber() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
@@ -149,10 +149,10 @@ export default function Transcriber() {
       <div className="text-center py-16 md:py-24 px-5">
         <p className="text-xs font-semibold tracking-[0.15em] uppercase text-muted-foreground mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Free Tool</p>
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.9] mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-          Social Media Transcript Generator
+          TikTok Transcript Generator
         </h1>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
-          Transcribe videos from any platform. Free forever, no limits, no accounts required.
+          Extract transcripts from any TikTok video for free. Get text, SRT, and VTT files for captions.
         </p>
         <div className="flex gap-2 justify-center mt-6 flex-wrap">
           {["Instagram Reels", "TikTok", "YouTube Shorts", "Twitter/X", "Facebook"].map(p => (
@@ -182,7 +182,7 @@ export default function Transcriber() {
               <div className="flex gap-3 items-center flex-col sm:flex-row">
                 <input value={url} onChange={e => setUrl(e.target.value)}
                   onKeyDown={e => e.key === "Enter" && transcribeSingle()}
-                  placeholder="Paste Instagram, TikTok, YouTube, or Twitter URL..."
+                  placeholder="Paste TikTok URL..."
                   className="flex-1 w-full px-4 py-3.5 rounded-full border border-border bg-muted text-foreground text-sm outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/50" />
                 <button onClick={transcribeSingle} disabled={loading}
                   className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-foreground text-background font-semibold text-sm hover:-translate-y-0.5 hover:shadow-lg transition-all disabled:opacity-40 disabled:translate-y-0 disabled:shadow-none whitespace-nowrap">

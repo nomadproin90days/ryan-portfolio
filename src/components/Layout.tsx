@@ -59,7 +59,15 @@ export default function Layout() {
 
       {/* Footer */}
       <footer className="w-full max-w-[1400px] border-t border-border px-5 md:px-14 py-10 flex flex-col md:flex-row justify-between items-center gap-6 mt-auto">
-        <span className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} Luxetide Studio. All rights reserved.</span>
+        <div className="flex flex-col gap-1 items-center md:items-start">
+          <span className="text-xs text-muted-foreground">&copy; {new Date().getFullYear()} Luxetide Studio. All rights reserved.</span>
+          <div className="flex gap-3 mt-1">
+            <Link to="/instagram-transcript" className="text-[10px] text-muted-foreground/60 hover:text-foreground transition-colors uppercase tracking-wider font-semibold">Instagram</Link>
+            <Link to="/tiktok-transcript" className="text-[10px] text-muted-foreground/60 hover:text-foreground transition-colors uppercase tracking-wider font-semibold">TikTok</Link>
+            <Link to="/youtube-transcript" className="text-[10px] text-muted-foreground/60 hover:text-foreground transition-colors uppercase tracking-wider font-semibold">YouTube</Link>
+          </div>
+        </div>
+
         <div className="flex gap-6">
           <a href="https://linkedin.com/in/ryanxmas" target="_blank" rel="noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a>
           <a href="https://github.com/nomadproin90days" target="_blank" rel="noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">GitHub</a>

@@ -5,6 +5,9 @@ import ContractorsPage from "./pages/CaseStudies/Contractors";
 import HealthcarePage from "./pages/CaseStudies/Healthcare";
 import Contact from "./pages/Contact";
 import Transcriber from "./pages/Transcriber";
+import InstagramTranscriber from "./pages/InstagramTranscriber";
+import TikTokTranscriber from "./pages/TikTokTranscriber";
+import YouTubeTranscriber from "./pages/YouTubeTranscriber";
 import Layout from "./components/Layout";
 
 function AnimatedRoutes() {
@@ -19,6 +22,9 @@ function AnimatedRoutes() {
           <Route path="/case-studies/healthcare" element={<HealthcarePage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/transcriber" element={<Transcriber />} />
+          <Route path="/instagram-transcript" element={<InstagramTranscriber />} />
+          <Route path="/tiktok-transcript" element={<TikTokTranscriber />} />
+          <Route path="/youtube-transcript" element={<YouTubeTranscriber />} />
         </Route>
       </Routes>
     </AnimatePresence>
