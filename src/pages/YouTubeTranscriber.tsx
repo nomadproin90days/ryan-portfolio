@@ -39,21 +39,22 @@ function formatDuration(s: number) {
 }
 
 export default function YouTubeTranscriber() {
-  useHead({
+    useHead({
     title: "Free YouTube Video & Shorts Transcript Generator | Luxetide Studio",
-    description: "Transcribe YouTube videos and Shorts to text instantly. Free, unlimited, no account required. AI-powered YouTube video to text converter.",
+    description: "Transcribe YouTube Video & Shorts to text instantly. Free, unlimited, no account required. AI-powered YouTube Video & Shorts to text converter.",
     canonical: "https://luxetidestudio.com/youtube-transcript",
     schema: {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "YouTube Transcript Generator",
+      "name": "YouTube Video & Shorts Transcript Generator",
       "url": "https://luxetidestudio.com/youtube-transcript",
-      "description": "Free AI-powered YouTube video and Shorts transcription tool. Paste any YouTube URL and get accurate text in seconds.",
+      "description": "Free AI-powered YouTube Video & Shorts transcription tool. Paste any URL and get accurate text in seconds.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "Any",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     },
   });
+
 
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
@@ -61,9 +62,7 @@ export default function YouTubeTranscriber() {
   const [error, setError] = useState("");
   const [result, setResult] = useState<JobResult | null>(null);
   const [view, setView] = useState<"segments" | "full">("segments");
-  const [tab, setTab] = useState<"single" | "batch" | "upload">("single");
-  const [batchUrls, setBatchUrls] = useState("");
-  const [batchResults, setBatchResults] = useState<JobResult[]>([]);
+  const [tab, setTab] = useState<"single" | "upload">("single");
   const fileRef = useRef<HTMLInputElement>(null);
 
   const pollJob = (jobId: string): Promise<JobResult> => {
@@ -95,25 +94,6 @@ export default function YouTubeTranscriber() {
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     } finally { setLoading(false); setStatus(""); }
-  };
-
-  const transcribeBatch = async () => {
-    const urls = batchUrls.split("\n").map(u => u.trim()).filter(Boolean);
-    if (!urls.length) return;
-    setError(""); setBatchResults([]);
-    try {
-      const res = await fetch(`${API}/api/transcribe/batch`, {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ urls }),
-      });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
-      data.jobs.forEach((j: { job_id: string }) => {
-        pollJob(j.job_id).then(job => {
-          setBatchResults(prev => [...prev, job]);
-        }).catch(() => {});
-      });
-    } catch (err: any) { setError(err.message); }
   };
 
   const handleUpload = async (file: File) => {
@@ -166,10 +146,10 @@ export default function YouTubeTranscriber() {
       <div className="text-center py-16 md:py-24 px-5">
         <p className="text-xs font-semibold tracking-[0.15em] uppercase text-muted-foreground mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Free Tool</p>
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.9] mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-          YouTube Transcript Generator
+          YouTube Video & Shorts Transcript Generator
         </h1>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
-          Fast and free YouTube transcript generator. Transcribe YouTube Shorts and videos to text or captions.
+          Transcribe videos from any platform. Free forever, no limits, no accounts required.
         </p>
         <div className="flex gap-2 justify-center mt-6 flex-wrap">
           {["Instagram Reels", "TikTok", "YouTube Shorts", "Twitter/X", "Facebook"].map(p => (
@@ -184,10 +164,10 @@ export default function YouTubeTranscriber() {
       <div className="max-w-4xl mx-auto px-5 pb-20">
         {/* Tabs */}
         <div className="flex gap-1 justify-center mb-6 bg-muted rounded-full p-1 border border-border max-w-md mx-auto">
-          {(["single", "batch", "upload"] as const).map(t => (
+          {(["single", "upload"] as const).map(t => (
             <button key={t} onClick={() => setTab(t)}
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all ${tab === t ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}>
-              {t === "single" ? "Single Video" : t === "batch" ? "Batch Mode" : "Upload"}
+              {t === "single" ? "Single Video" : "Upload"}
             </button>
           ))}
         </div>
@@ -199,7 +179,7 @@ export default function YouTubeTranscriber() {
               <div className="flex gap-3 items-center flex-col sm:flex-row">
                 <input value={url} onChange={e => setUrl(e.target.value)}
                   onKeyDown={e => e.key === "Enter" && transcribeSingle()}
-                  placeholder="Paste YouTube URL..."
+                  placeholder="Paste YouTube Video & Shorts URL..."
                   className="flex-1 w-full px-4 py-3.5 rounded-full border border-border bg-muted text-foreground text-sm outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/50" />
                 <button onClick={transcribeSingle} disabled={loading}
                   className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-foreground text-background font-semibold text-sm hover:-translate-y-0.5 hover:shadow-lg transition-all disabled:opacity-40 disabled:translate-y-0 disabled:shadow-none whitespace-nowrap">
@@ -282,31 +262,6 @@ export default function YouTubeTranscriber() {
                 </div>
               </div>
             )}
-          </div>
-        )}
-
-        {/* Batch */}
-        {tab === "batch" && (
-          <div>
-            <div className="border border-border rounded-xl p-5 mb-4">
-              <textarea value={batchUrls} onChange={e => setBatchUrls(e.target.value)}
-                placeholder={"Paste one URL per line...\n\nhttps://www.instagram.com/reel/...\nhttps://www.tiktok.com/@user/video/..."}
-                className="w-full min-h-[150px] px-4 py-3 rounded-xl border border-border bg-muted text-foreground text-sm font-mono outline-none focus:border-foreground transition-colors resize-y placeholder:text-muted-foreground/50" />
-              <p className="text-xs text-muted-foreground mt-2 mb-3">One URL per line. Up to 20 videos at a time.</p>
-              <button onClick={transcribeBatch}
-                className="px-7 py-3.5 rounded-full bg-foreground text-background font-semibold text-sm hover:-translate-y-0.5 hover:shadow-lg transition-all">
-                Transcribe All
-              </button>
-            </div>
-            {error && <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm mb-4">{error}</div>}
-            <div className="space-y-3">
-              {batchResults.map((job, i) => (
-                <div key={i} className="border border-border rounded-xl p-4">
-                  <p className="text-sm font-semibold mb-1">{job.video_info?.title}</p>
-                  <p className="text-sm text-muted-foreground whitespace-pre-wrap max-h-[200px] overflow-y-auto">{job.result?.full_text}</p>
-                </div>
-              ))}
-            </div>
           </div>
         )}
 
