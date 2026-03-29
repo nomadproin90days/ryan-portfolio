@@ -18,7 +18,7 @@ export default function Layout() {
             <li><a href="/#projects" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Projects</a></li>
             <li><a href="/#process" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Process</a></li>
             <li><a href="/#about" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">About</a></li>
-            <li><a href="https://transcriber.luxetidestudio.com" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Free Transcriber Tool</a></li>
+            <li><a href="/transcriber" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Free Transcriber Tool</a></li>
           </ul>
           <Link to="/contact" className="hidden md:inline-flex text-xs font-medium text-primary-foreground bg-primary px-5 py-2.5 rounded-full hover:-translate-y-[1px] hover:shadow-lg transition-all tracking-wide">
             Get in touch
@@ -47,7 +47,7 @@ export default function Layout() {
             <a href="/#projects" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Projects</a>
             <a href="/#process" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Process</a>
             <a href="/#about" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">About</a>
-            <a href="https://transcriber.luxetidestudio.com" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Free Transcriber Tool</a>
+            <a href="/transcriber" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Free Transcriber Tool</a>
             <Link to="/contact" onClick={() => setMenuOpen(false)} className="text-base text-primary font-medium mt-2">Get in touch →</Link>
           </motion.div>
         )}

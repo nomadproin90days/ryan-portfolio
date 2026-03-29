@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import ContractorsPage from "./pages/CaseStudies/Contractors";
 import HealthcarePage from "./pages/CaseStudies/Healthcare";
 import Contact from "./pages/Contact";
+import Transcriber from "./pages/Transcriber";
 import Layout from "./components/Layout";
 
 function AnimatedRoutes() {
@@ -17,6 +18,7 @@ function AnimatedRoutes() {
           <Route path="/case-studies/contractors" element={<ContractorsPage />} />
           <Route path="/case-studies/healthcare" element={<HealthcarePage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/transcriber" element={<Transcriber />} />
         </Route>
       </Routes>
     </AnimatePresence>
