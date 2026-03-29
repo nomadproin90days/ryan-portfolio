@@ -1,6 +1,6 @@
-# Luxe Tide Studio
+# Luxetide Studio
 
-> Luxe Tide Studio is a technical automation studio founded by Ryan Christmas,
+> Luxetide Studio is a technical automation studio founded by Ryan Christmas,
 > specializing in CRM automation, AI workflows, and full-stack development
 > for agencies and startups.
 

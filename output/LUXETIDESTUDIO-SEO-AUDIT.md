@@ -187,7 +187,7 @@ Full JSON-LD is saved in the schema audit output file.
 - **No schema markup** — AI systems can't identify the entity
 - **No question-based headings** — all H2s are branding phrases, not query-matching
 - **Passages too short** — optimal is 134-167 words; site averages 20-40 word fragments
-- **No direct answer patterns** — never states "Luxe Tide Studio is a..."
+- **No direct answer patterns** — never states "Luxetide Studio is a..."
 - **Statistics lack attribution** — "184 businesses" has no timeframe, client, or context
 
 ### Platform Visibility Estimates

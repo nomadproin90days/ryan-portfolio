@@ -45,7 +45,7 @@ Key elements from that template applied here:
 - Right-aligned descriptive text next to massive headings
 - Clean, premium, high-end creative studio feel
 
-### Brand: Luxe Tide Studio
+### Brand: Luxetide Studio
 - **Vibe:** Puerto Escondido, Oaxaca, Mexico. Surfing. Sunset. Mezcal. Digital nomad lifestyle. La Punta mornings, Zicatela swells, deep work in between.
 - **Tone:** Professional but not corporate. Confident, not bragging. Shows capability through the work, not through hype.
 - **Typography:** Space Grotesk (headings, massive display), Inter (body)
@@ -57,7 +57,7 @@ Key elements from that template applied here:
 ## RYAN'S PERSONAL INFO (from resume)
 
 - **Full name:** Ryan Christmas
-- **Company:** Luxe Tide Studio
+- **Company:** Luxetide Studio
 - **Title:** AI Implementation Specialist, CRM & Automation Architect, GoHighLevel Expert
 - **Email:** ryan@luxetidestudio.com
 - **Personal email:** iamryanxmas@gmail.com
@@ -72,7 +72,7 @@ Key elements from that template applied here:
 
 ## CONTENT SECTIONS (current order)
 
-1. **Nav** - "Luxe Tide Studio" logo, links (Projects, Process, About), "Get in touch" pill button
+1. **Nav** - "Luxetide Studio" logo, links (Projects, Process, About), "Get in touch" pill button
 2. **Hero** - Massive "Automation Studio" heading, two-column intro text, personal details
 3. **Hero Image** - Ryan's motorcycle/coast photo with location overlay
 4. **Info Bar** - 4-cell grid: Email, WhatsApp, Mobile, Location
@@ -149,4 +149,4 @@ Contains detailed work history, toolkit, competencies, and professional profile 
 
 ---
 
-*This handoff is for Ryan Christmas / Luxe Tide Studio internal use. It provides full context for any AI assistant continuing work on the portfolio.*
+*This handoff is for Ryan Christmas / Luxetide Studio internal use. It provides full context for any AI assistant continuing work on the portfolio.*
