@@ -86,9 +86,9 @@ export default function ContractorsPage() {
       ))}
       
       <div className="w-full pt-20 flex justify-center mt-10">
-         <Link to="/contact" className="bg-foreground text-background px-8 py-4 rounded-full font-semibold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+         <a href="https://link.luxetidestudio.com/widget/booking/ewffe" target="_blank" rel="noreferrer" className="bg-foreground text-background px-8 py-4 rounded-full font-semibold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             Discuss Your Scaling Challenges →
-         </Link>
+         </a>
       </div>
 
     </motion.div>

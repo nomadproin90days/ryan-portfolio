@@ -1,7 +1,10 @@
 import { motion } from "motion/react";
 import { Link } from "react-router";
+import { useState } from "react";
 
 export default function Contact() {
+  const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
   const slideUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -49,28 +52,70 @@ export default function Contact() {
                   <a href="mailto:ryan@luxetidestudio.com" className="text-foreground text-xl font-medium tracking-tight hover:opacity-70 transition-opacity">
                      ryan@luxetidestudio.com
                   </a>
-                  <a href="https://wa.me/16194166678" target="_blank" rel="noreferrer" className="text-foreground text-xl font-medium tracking-tight hover:opacity-70 transition-opacity">
-                     +1 619 416 6678 (WhatsApp)
+                  <a href="tel:+16194166678" className="text-foreground text-xl font-medium tracking-tight hover:opacity-70 transition-opacity">
+                     +1 619 416 6678
+                  </a>
+                  <a href="https://wa.me/16194166678" target="_blank" rel="noreferrer" className="text-muted-foreground text-base font-medium tracking-tight hover:opacity-70 transition-opacity">
+                     Or message on WhatsApp →
                   </a>
                </div>
             </div>
 
-            <form className="flex flex-col gap-6 w-full max-w-[500px]" onSubmit={(e) => e.preventDefault()}>
+            <form
+              className="flex flex-col gap-6 w-full max-w-[500px]"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (formState === "submitting") return;
+                setFormState("submitting");
+                const form = e.currentTarget;
+                const formData = new FormData(form);
+                try {
+                  const res = await fetch("/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      name: formData.get("name"),
+                      email: formData.get("email"),
+                      message: formData.get("message"),
+                    }),
+                  });
+                  if (res.ok) {
+                    setFormState("success");
+                    form.reset();
+                  } else {
+                    setFormState("error");
+                  }
+                } catch {
+                  setFormState("error");
+                }
+              }}
+            >
                <div className="flex flex-col gap-2">
                   <label htmlFor="name" className="text-sm font-semibold tracking-wide text-foreground">Name</label>
-                  <input type="text" id="name" className="border-b border-border bg-transparent pb-3 pt-2 text-foreground focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/50" placeholder="John Doe" />
+                  <input type="text" id="name" name="name" required className="border-b border-border bg-transparent pb-3 pt-2 text-foreground focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/50" placeholder="John Doe" />
                </div>
                <div className="flex flex-col gap-2">
                   <label htmlFor="email" className="text-sm font-semibold tracking-wide text-foreground">Email</label>
-                  <input type="email" id="email" className="border-b border-border bg-transparent pb-3 pt-2 text-foreground focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/50" placeholder="john@example.com" />
+                  <input type="email" id="email" name="email" required className="border-b border-border bg-transparent pb-3 pt-2 text-foreground focus:outline-none focus:border-foreground transition-colors placeholder:text-muted-foreground/50" placeholder="john@example.com" />
                </div>
                <div className="flex flex-col gap-2">
                   <label htmlFor="message" className="text-sm font-semibold tracking-wide text-foreground">Message</label>
-                  <textarea id="message" rows={4} className="border-b border-border bg-transparent pb-3 pt-2 text-foreground focus:outline-none focus:border-foreground transition-colors resize-none placeholder:text-muted-foreground/50" placeholder="Tell me about your system constraints..." />
+                  <textarea id="message" name="message" rows={4} className="border-b border-border bg-transparent pb-3 pt-2 text-foreground focus:outline-none focus:border-foreground transition-colors resize-none placeholder:text-muted-foreground/50" placeholder="Tell me about your system constraints..." />
                </div>
-               <button type="submit" className="bg-foreground text-background font-semibold py-4 w-full md:w-auto rounded-full hover:shadow-xl hover:-translate-y-1 transition-all flex justify-center items-center gap-2 max-w-[200px] mt-4">
-                  Send Message →
-               </button>
+               {formState === "success" ? (
+                 <p className="text-emerald-400 font-medium py-4">Message sent — I'll be in touch shortly.</p>
+               ) : (
+                 <button
+                   type="submit"
+                   disabled={formState === "submitting"}
+                   className="bg-foreground text-background font-semibold py-4 w-full md:w-auto rounded-full hover:shadow-xl hover:-translate-y-1 transition-all flex justify-center items-center gap-2 max-w-[200px] mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                 >
+                   {formState === "submitting" ? "Sending..." : "Send Message →"}
+                 </button>
+               )}
+               {formState === "error" && (
+                 <p className="text-red-400 text-sm">Something went wrong. Try emailing directly.</p>
+               )}
             </form>
          </div>
 
