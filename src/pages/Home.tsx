@@ -88,7 +88,7 @@ export default function Home() {
           </div>
           <motion.div variants={heroItem}>
             <a
-              href="https://link.luxetidestudio.com/widget/booking/ewffe"
+              href="https://link.msgsndr.com/widget/booking/Ti4Dt85I47B5xG3rPUDJ"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-3 bg-white text-black font-semibold px-8 py-4 rounded-full text-sm tracking-wide transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:-translate-y-1"
@@ -273,7 +273,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
           whileHover={{ scale: 1.05 }}
-          href="https://link.luxetidestudio.com/widget/booking/ewffe"
+          href="https://link.msgsndr.com/widget/booking/Ti4Dt85I47B5xG3rPUDJ"
           target="_blank"
           rel="noreferrer"
           className="bg-background text-foreground font-semibold px-10 py-5 rounded-full text-lg tracking-tight hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] transition-all"

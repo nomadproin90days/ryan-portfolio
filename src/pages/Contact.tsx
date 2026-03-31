@@ -125,7 +125,7 @@ export default function Contact() {
             <p className="text-sm text-muted-foreground px-6 pb-6">Book a 30-minute discovery call below.</p>
             <div className="flex-1 w-full rounded-2xl overflow-hidden bg-background">
                <iframe 
-                 src="https://link.luxetidestudio.com/widget/booking/ewffe" 
+                 src="https://link.msgsndr.com/widget/booking/Ti4Dt85I47B5xG3rPUDJ" 
                  title="Booking Calendar" 
                  className="w-full h-full border-none min-h-[600px]"
                  scrolling="yes"
