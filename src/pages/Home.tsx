@@ -247,6 +247,61 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Writing Preview */}
+      <section id="writing" className="w-full max-w-[1400px] px-5 md:px-14 mb-32">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-10"
+        >
+          <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-4">Writing</p>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            Operating Notes
+          </h2>
+        </motion.div>
+
+        <Link to="/blog/april-2026-performance" className="block group">
+          <motion.article
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            whileHover={{ scale: 1.01, y: -3 }}
+            transition={{ duration: 0.45 }}
+            className="rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 md:p-12 hover:border-white/[0.16] hover:bg-white/[0.05] transition-colors"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 items-end">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-5">April 2026 Performance Recap</p>
+                <h3 className="text-3xl md:text-5xl font-bold tracking-tighter mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  April was the month the system started selling.
+                </h3>
+                <p className="text-muted-foreground leading-relaxed max-w-2xl">
+                  A field note on low churn, SEO upsells, client-specific competitor audits, and the data layer that turned customer success into a revenue operating system.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  ["0.9%", "30-day churn"],
+                  ["114", "active clients"],
+                  ["$7.1K", "SEO logged"],
+                  ["#6", "leaderboard"],
+                ].map(([value, label]) => (
+                  <div key={label} className="rounded-2xl bg-black/[0.18] border border-white/[0.06] p-5">
+                    <div className="text-3xl font-bold tracking-tighter mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{value}</div>
+                    <div className="text-[11px] uppercase tracking-widest text-muted-foreground">{label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-8 text-sm font-semibold group-hover:translate-x-1 transition-transform inline-block">
+              Read the recap →
+            </div>
+          </motion.article>
+        </Link>
+      </section>
+
       {/* CTA Bottom */}
       <section className="w-full px-5 md:px-14 py-32 bg-foreground text-background text-center flex flex-col items-center">
         <motion.h2 

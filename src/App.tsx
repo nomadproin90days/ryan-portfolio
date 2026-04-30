@@ -8,6 +8,7 @@ import Transcriber from "./pages/Transcriber";
 import InstagramTranscriber from "./pages/InstagramTranscriber";
 import TikTokTranscriber from "./pages/TikTokTranscriber";
 import YouTubeTranscriber from "./pages/YouTubeTranscriber";
+import April2026Performance from "./pages/Blog/April2026Performance";
 import Layout from "./components/Layout";
 
 function AnimatedRoutes() {
@@ -25,6 +26,7 @@ function AnimatedRoutes() {
           <Route path="/instagram-transcript" element={<InstagramTranscriber />} />
           <Route path="/tiktok-transcript" element={<TikTokTranscriber />} />
           <Route path="/youtube-transcript" element={<YouTubeTranscriber />} />
+          <Route path="/blog/april-2026-performance" element={<April2026Performance />} />
         </Route>
       </Routes>
     </AnimatePresence>

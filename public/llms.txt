@@ -10,6 +10,8 @@
 - Completed 800+ SMS compliance (A2P 10DLC) migrations
 - Reduced client onboarding time from 7 days to under 48 hours
 - Maintains 99.9% system uptime across managed portfolio
+- Published April 2026 performance recap covering 0.9% 30-day churn,
+  114 active clients, and $7.1K in logged SEO expansion revenue
 
 ## Services
 - GoHighLevel CRM automation and sub-account management
@@ -19,6 +21,9 @@
 - Google Ads API management at portfolio scale
 - Revenue operations (Stripe billing, DNS, compliance)
 - Strategy consulting (brand positioning, go-to-market, launch roadmaps)
+
+## Writing
+- April 2026 Performance Recap: https://luxetidestudio.com/blog/april-2026-performance
 
 ## Tech Stack
 GoHighLevel, Next.js, React, TypeScript, Tailwind CSS, Supabase, PostgreSQL,

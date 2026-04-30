@@ -16,6 +16,7 @@ export default function Layout() {
         <div className="flex items-center gap-8">
           <ul className="hidden md:flex gap-7 list-none m-0 p-0">
             <li><a href="/#projects" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Projects</a></li>
+            <li><a href="/#writing" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Writing</a></li>
             <li><a href="/#process" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Process</a></li>
             <li><a href="/#about" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">About</a></li>
             <li><a href="/transcriber" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Free Transcriber Tool</a></li>
@@ -45,6 +46,7 @@ export default function Layout() {
             className="fixed top-16 left-0 right-0 bg-white/97 dark:bg-black/97 backdrop-blur-xl border-b border-border z-40 flex flex-col px-5 py-6 gap-5 md:hidden"
           >
             <a href="/#projects" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+            <a href="/#writing" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Writing</a>
             <a href="/#process" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Process</a>
             <a href="/#about" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">About</a>
             <a href="/transcriber" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Free Transcriber Tool</a>
