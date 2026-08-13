@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion } from "motion/react";
 import useHead from "../hooks/useHead";
 
-const API = "https://transcriber-production-a626.up.railway.app";
+const API = (import.meta.env.VITE_TRANSCRIBER_API_URL || "https://iamryanxmas-transcriber.hf.space").replace(/\/$/, "");
 
 type Segment = { start: number; end: number; text: string };
 type JobResult = {

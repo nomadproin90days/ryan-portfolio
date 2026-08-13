@@ -22,6 +22,13 @@
 - Revenue operations (Stripe billing, DNS, compliance)
 - Strategy consulting (brand positioning, go-to-market, launch roadmaps)
 
+## Case Studies
+- Client Success Ops, Automated: https://luxetidestudio.com/case-studies/csm-operations
+  Contract CSM engagement for a paid-ads lead generation agency, rebuilt as a
+  command-line operating system. Preflight health checks, multi-account CRM inbox
+  triage, dashboard scraping and contact logging, a browser layer migrated off a
+  broken CDP dependency, and a five-part single-SKU upsell engine.
+
 ## Writing
 - April 2026 Performance Recap: https://luxetidestudio.com/blog/april-2026-performance
 
@@ -30,7 +37,8 @@ GoHighLevel, Next.js, React, TypeScript, Tailwind CSS, Supabase, PostgreSQL,
 Vercel, Voice AI, n8n, Google Ads API, Stripe, Playwright, Python
 
 ## Contact
-- Email: ryan@luxetidestudio.com
+- Business Email: ryan@luxetidestudio.com
+- Personal Email: iamryanxmas@gmail.com
 - WhatsApp: +1 619 416 6678
 - Website: https://luxetidestudio.com
 - LinkedIn: https://linkedin.com/in/ryanxmas

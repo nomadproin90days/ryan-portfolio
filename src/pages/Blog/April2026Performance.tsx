@@ -3,10 +3,10 @@ import { Link } from "react-router";
 import useHead from "../../hooks/useHead";
 
 const metrics = [
-  { value: "0.9%", label: "30-day churn", detail: "1 churn across 115 measured accounts" },
-  { value: "114", label: "active clients", detail: "largest low-churn book in the visible CSM set" },
-  { value: "$7.1K", label: "SEO revenue logged", detail: "$710.43 in tracked commission" },
-  { value: "#6", label: "CSM leaderboard", detail: "best position among large books by churn rate" },
+  { value: "3.4%", label: "monthly churn", detail: "2 churns across 138 clients. Company avg: 6.3%" },
+  { value: "138", label: "active clients", detail: "largest book in the company by client count" },
+  { value: "$8,009", label: "commission generated", detail: "#1 on the leaderboard. Nearly 2x the next closest CSM" },
+  { value: "#1", label: "CSM leaderboard", detail: "#1 in MRR, upsells, and total commission" },
 ];
 
 const wins = [
@@ -16,11 +16,11 @@ const wins = [
   },
   {
     title: "Built a stronger ranking-service pipeline",
-    body: "The strongest opportunities came from clients who already wanted more leads but were buried locally. Valley Painters, Flavio Carvalho Law, Advantage Plumbing, SureStep, EB Trees and Landscape, Budget Paving, and other accounts became part of a sharper SEO pipeline built around top-3 local ranking, competitor proof, and a 90-day guarantee."
+    body: "The strongest opportunities came from clients who already wanted more leads but were buried locally. A painting company, a law firm, a plumbing company, a tree and landscape company, a paving company, and other accounts became part of a sharper SEO pipeline built around top-3 local ranking, competitor proof, and a 90-day guarantee."
   },
   {
     title: "Protected retention while selling expansion",
-    body: "The month was not just selling. I worked billing-risk and churn-risk situations, including Ridge Pro Contracting and West Coast HVAC, while avoiding the trap of pitching expansion into unresolved service pain. The operating rule was simple: stabilize trust first, then talk growth."
+    body: "The month was not just selling. I worked billing-risk and churn-risk situations, including a contracting company and an HVAC company, while avoiding the trap of pitching expansion into unresolved service pain. The operating rule was simple: stabilize trust first, then talk growth."
   },
   {
     title: "Synced the operating layer",
@@ -84,7 +84,7 @@ export default function April2026Performance() {
         className="text-[12vw] md:text-7xl lg:text-[96px] font-bold tracking-tighter leading-[0.9] mb-8 text-balance"
         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
       >
-        April was the month the system started selling.
+        #1 across every metric. Here's how.
       </motion.h1>
 
       <motion.p
@@ -93,7 +93,7 @@ export default function April2026Performance() {
         animate="visible"
         className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl mb-14"
       >
-        This month was about proving that customer success can be an operating system, not just a queue of follow-ups. The work combined retention, expansion, CRM data, Gmail context, local SEO audits, and fast client-specific outreach.
+        April ended with #1 on the company leaderboard: highest MRR ($44.7K), most upsells (5), and most commission generated ($8,009). Managing 138 active clients, the largest book in the company, with a 3.4% churn rate against a company average of 6.3%.
       </motion.p>
 
       <motion.div
@@ -122,10 +122,10 @@ export default function April2026Performance() {
         </aside>
         <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
           <p>
-            The visible leaderboard data put me at roughly <strong className="text-foreground">0.9% 30-day churn</strong>, with 114 active clients and one recent churn. That mattered because the book was not small. A 0% churn month is great when the book is 20 to 30 accounts. Holding churn under 1% with a larger portfolio is a different operating problem.
+            The leaderboard data at month end: <strong className="text-foreground">3.4% 30-day churn</strong> with 138 active clients and <strong className="text-foreground">$44.7K MRR under management</strong>, the highest in the company. Holding churn below the company average (6.3%) with the largest portfolio is a different operating problem than doing it with 20-30 accounts.
           </p>
           <p>
-            At the same time, April turned into a real expansion month. The SEO offer became sharper: find clients with a verified Google foundation, prove the local ranking gap with a competitor, and give them a clean next step. By the end of the month, the upsell tracker had <strong className="text-foreground">$7,104.34 in SEO revenue logged</strong> and <strong className="text-foreground">$710.43 in commission tracked</strong>.
+            April was also the strongest expansion month. 5 upsells closed, <strong className="text-foreground">$8,009 in commission generated</strong>, nearly double the next closest CSM ($6,247). The approach: find clients with a verified Google foundation, prove the local ranking gap with a competitor audit, and give them a clean next step. No hard pitches. Data-driven offers that set meetings or got approval on the call.
           </p>
         </div>
       </div>

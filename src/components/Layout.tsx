@@ -15,6 +15,7 @@ export default function Layout() {
         
         <div className="flex items-center gap-8">
           <ul className="hidden md:flex gap-7 list-none m-0 p-0">
+            <li><a href="/journey" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Journey</a></li>
             <li><a href="/#projects" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Projects</a></li>
             <li><a href="/#writing" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Writing</a></li>
             <li><a href="/#process" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide">Process</a></li>
@@ -45,6 +46,7 @@ export default function Layout() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed top-16 left-0 right-0 bg-white/97 dark:bg-black/97 backdrop-blur-xl border-b border-border z-40 flex flex-col px-5 py-6 gap-5 md:hidden"
           >
+            <a href="/journey" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Journey</a>
             <a href="/#projects" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Projects</a>
             <a href="/#writing" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Writing</a>
             <a href="/#process" onClick={() => setMenuOpen(false)} className="text-base text-muted-foreground hover:text-foreground transition-colors">Process</a>
@@ -70,7 +72,9 @@ export default function Layout() {
           </div>
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex gap-6 items-center">
+          <a href="mailto:iamryanxmas@gmail.com" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Email</a>
+          <a href="https://wa.me/16194166678" target="_blank" rel="noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">WhatsApp</a>
           <a href="https://linkedin.com/in/ryanxmas" target="_blank" rel="noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a>
           <a href="https://github.com/nomadproin90days" target="_blank" rel="noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
           <Link to="/contact" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Contact</Link>

@@ -3,12 +3,14 @@ import { AnimatePresence } from "motion/react";
 import Home from "./pages/Home";
 import ContractorsPage from "./pages/CaseStudies/Contractors";
 import HealthcarePage from "./pages/CaseStudies/Healthcare";
+import CsmOperationsPage from "./pages/CaseStudies/CsmOperations";
 import Contact from "./pages/Contact";
 import Transcriber from "./pages/Transcriber";
 import InstagramTranscriber from "./pages/InstagramTranscriber";
 import TikTokTranscriber from "./pages/TikTokTranscriber";
 import YouTubeTranscriber from "./pages/YouTubeTranscriber";
 import April2026Performance from "./pages/Blog/April2026Performance";
+import Journey from "./pages/Journey";
 import Layout from "./components/Layout";
 
 function AnimatedRoutes() {
@@ -21,12 +23,14 @@ function AnimatedRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/case-studies/contractors" element={<ContractorsPage />} />
           <Route path="/case-studies/healthcare" element={<HealthcarePage />} />
+          <Route path="/case-studies/csm-operations" element={<CsmOperationsPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/transcriber" element={<Transcriber />} />
           <Route path="/instagram-transcript" element={<InstagramTranscriber />} />
           <Route path="/tiktok-transcript" element={<TikTokTranscriber />} />
           <Route path="/youtube-transcript" element={<YouTubeTranscriber />} />
           <Route path="/blog/april-2026-performance" element={<April2026Performance />} />
+          <Route path="/journey" element={<Journey />} />
         </Route>
       </Routes>
     </AnimatePresence>

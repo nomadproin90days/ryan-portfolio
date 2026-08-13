@@ -124,10 +124,10 @@ export default function Home() {
       <section className="w-full border-y border-white/10 mb-32">
         <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10">
           {[
-            { num: 184, label: "Businesses Scaled", suffix: "" },
-            { num: 800, label: "SMS Migrations", suffix: "+" },
-            { num: 48, label: "Hour Onboarding", suffix: "hr" },
-            { num: 99.9, label: "Uptime Guaranteed", suffix: "%", float: true }
+            { num: 138, label: "Clients Managed", suffix: "" },
+            { num: 44.7, label: "MRR Under Mgmt", suffix: "K", prefix: "$", float: true },
+            { num: 3.4, label: "Monthly Churn", suffix: "%", float: true },
+            { num: 1, label: "Leaderboard Rank", suffix: "", prefix: "#" }
           ].map((stat, i) => (
             <motion.div
               key={i}
@@ -140,11 +140,107 @@ export default function Home() {
                 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground mb-2"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
-                {stat.float ? stat.num : <AnimatedNumber target={stat.num} />}{stat.suffix}
+                {stat.prefix || ""}{stat.float ? stat.num : <AnimatedNumber target={stat.num} />}{stat.suffix}
               </div>
               <div className="text-xs uppercase tracking-widest text-muted-foreground font-medium">{stat.label}</div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Testimonial */}
+      <section id="testimonial" className="w-full max-w-[1400px] px-5 md:px-14 mb-32">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-4">Testimonial</p>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            In Their Words
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-8 lg:gap-14 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.5 }}
+            className="w-full max-w-[340px] mx-auto lg:mx-0"
+          >
+            <video
+              controls
+              preload="none"
+              playsInline
+              poster="/images/nico-testimonial-poster.jpg"
+              className="w-full aspect-[9/16] rounded-2xl border border-black/10 dark:border-white/[0.08] bg-black object-cover"
+            >
+              <source src="/video/nico-testimonial.mp4" type="video/mp4" />
+              <track
+                kind="captions"
+                src="/video/nico-testimonial.vtt"
+                srcLang="en"
+                label="English"
+                default
+              />
+            </video>
+            <p className="text-xs text-muted-foreground mt-3 text-center lg:text-left">
+              55 seconds &middot; captions available
+            </p>
+          </motion.div>
+
+          <div className="flex flex-col gap-6">
+            <motion.blockquote
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.08 }}
+              className="rounded-2xl border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] p-8 md:p-12"
+            >
+              <p
+                className="text-2xl md:text-4xl font-bold tracking-tighter leading-[1.15] text-balance mb-8"
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              >
+                &ldquo;I worked with Ryan Christmas for about two and a half months as my CSM, and cannot recommend this guy enough.&rdquo;
+              </p>
+              <footer className="flex flex-col gap-1">
+                <cite className="not-italic text-sm font-semibold text-foreground">Niccolo &ldquo;Nico&rdquo; Defendi Cho</cite>
+                <span className="text-sm text-muted-foreground">Owner, Launch Pros LLC</span>
+              </footer>
+            </motion.blockquote>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {[
+                {
+                  quote: "He really had diligent follow-up. Got me multiple testimonials, hopped on multiple Zoom calls, quelled multiple issues.",
+                  label: "Follow-through"
+                },
+                {
+                  quote: "He really understood the construction industry as well — so that means, you know, any sort of contractor.",
+                  label: "Domain fluency"
+                },
+                {
+                  quote: "I mentioned some sort of CRM that he knew, and that instantly creates rapport. With a CSM, that's very important.",
+                  label: "Technical credibility"
+                }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ delay: 0.15 + i * 0.08, duration: 0.4 }}
+                  className="rounded-2xl border border-black/10 dark:border-white/[0.06] bg-black/[0.015] dark:bg-white/[0.02] p-6 flex flex-col gap-3"
+                >
+                  <p className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">{item.label}</p>
+                  <p className="text-sm text-foreground/90 leading-relaxed">&ldquo;{item.quote}&rdquo;</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -201,7 +297,7 @@ export default function Home() {
           </h2>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             {
               to: "/case-studies/contractors",
@@ -210,7 +306,8 @@ export default function Home() {
               desc: "Automated workflows and centralized snapshot deployment across 184 sub-accounts.",
               metric: "184",
               metricLabel: "Trade Businesses",
-              gradient: "from-blue-500/20 via-indigo-500/10 to-transparent"
+              gradient: "from-blue-500/20 via-indigo-500/10 to-transparent",
+              external: false
             },
             {
               to: "/case-studies/healthcare",
@@ -219,31 +316,57 @@ export default function Home() {
               desc: "Automated SMS registration and secure data pipeline routing for HIPAA-aware systems.",
               metric: "800+",
               metricLabel: "Clinics Migrated",
-              gradient: "from-emerald-500/20 via-teal-500/10 to-transparent"
+              gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
+              external: false
+            },
+            {
+              to: "/case-studies/csm-operations",
+              label: "Retention & Expansion Ops",
+              title: "Client Success Ops, Automated",
+              desc: "A contract CSM engagement rebuilt as a command-line system: preflight health checks, multi-account inbox triage, dashboard scraping and logging, and a single-SKU upsell engine.",
+              metric: "6",
+              metricLabel: "Ops CLIs Shipped",
+              gradient: "from-rose-500/20 via-amber-500/10 to-transparent",
+              external: false
+            },
+            {
+              to: "https://gbp-sop-deploy.vercel.app",
+              label: "Operations SOP",
+              title: "Google Business Profile Fix SOP",
+              desc: "Authored the company-wide standard operating procedure for GBP verification, suspension appeals, and video verification. Adopted by leadership and used across all CSM teams.",
+              metric: "100+",
+              metricLabel: "Profiles Processed",
+              gradient: "from-amber-500/20 via-orange-500/10 to-transparent",
+              external: true
             }
-          ].map((project, i) => (
-            <Link key={i} to={project.to} className="block group">
-              <motion.div
-                whileHover={{ scale: 1.02, y: -4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="w-full rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-colors duration-300"
-              >
-                <div className={`p-10 md:p-14 bg-gradient-to-br ${project.gradient}`}>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-6">{project.label}</p>
-                  <div className="text-6xl md:text-7xl font-bold tracking-tighter mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    {project.metric}
+          ].map((project, i) => {
+            const Wrapper = project.external
+              ? ({ children, className }: { children: React.ReactNode; className: string }) => <a href={project.to} target="_blank" rel="noreferrer" className={className}>{children}</a>
+              : ({ children, className }: { children: React.ReactNode; className: string }) => <Link to={project.to} className={className}>{children}</Link>;
+            return (
+              <Wrapper key={i} className="block group">
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="w-full h-full rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-colors duration-300"
+                >
+                  <div className={`p-10 md:p-14 bg-gradient-to-br ${project.gradient}`}>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-6">{project.label}</p>
+                    <div className="text-6xl md:text-7xl font-bold tracking-tighter mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {project.metric}
+                    </div>
+                    <p className="text-sm text-muted-foreground">{project.metricLabel}</p>
                   </div>
-                  <p className="text-sm text-muted-foreground">{project.metricLabel}</p>
-                </div>
-                <div className="p-8 border-t border-white/[0.06]">
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-white transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    {project.title} <span className="inline-block group-hover:translate-x-1 transition-transform">→</span>
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{project.desc}</p>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
+                  <div className="p-8 border-t border-white/[0.06]">
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-white transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {project.title} <span className="inline-block group-hover:translate-x-1 transition-transform">{project.external ? "↗" : "→"}</span>
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{project.desc}</p>
+                  </div>
+                </motion.div>
+              </Wrapper>
+            );
+          })}
         </div>
       </section>
 
@@ -275,18 +398,18 @@ export default function Home() {
               <div>
                 <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-5">April 2026 Performance Recap</p>
                 <h3 className="text-3xl md:text-5xl font-bold tracking-tighter mb-5" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  April was the month the system started selling.
+                  #1 across every metric. Here's how.
                 </h3>
                 <p className="text-muted-foreground leading-relaxed max-w-2xl">
-                  A field note on low churn, SEO upsells, client-specific competitor audits, and the data layer that turned customer success into a revenue operating system.
+                  A field note on hitting #1 in churn, revenue, upsells, and MRR while managing the largest client book in the company. The data layer that turned customer success into a revenue operating system.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  ["0.9%", "30-day churn"],
-                  ["114", "active clients"],
-                  ["$7.1K", "SEO logged"],
-                  ["#6", "leaderboard"],
+                  ["3.4%", "monthly churn"],
+                  ["138", "active clients"],
+                  ["$8K", "commission"],
+                  ["#1", "leaderboard"],
                 ].map(([value, label]) => (
                   <div key={label} className="rounded-2xl bg-black/[0.18] border border-white/[0.06] p-5">
                     <div className="text-3xl font-bold tracking-tighter mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{value}</div>

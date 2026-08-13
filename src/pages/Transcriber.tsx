@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion } from "motion/react";
 import useHead from "../hooks/useHead";
 
-const API = "https://transcriber-production-a626.up.railway.app";
+const API = (import.meta.env.VITE_TRANSCRIBER_API_URL || "https://iamryanxmas-transcriber.hf.space").replace(/\/$/, "");
 
 type Segment = { start: number; end: number; text: string };
 type JobResult = {
@@ -38,6 +38,27 @@ function formatDuration(s: number) {
   return `${m}:${sec.toString().padStart(2, "0")}`;
 }
 
+async function readJson<T>(res: Response): Promise<T> {
+  const text = await res.text();
+  let data: unknown = {};
+  if (text) {
+    try {
+      data = JSON.parse(text);
+    } catch {
+      throw new Error(`Unexpected response from transcriber service (${res.status})`);
+    }
+  }
+
+  if (!res.ok) {
+    const message = typeof data === "object" && data && "error" in data
+      ? String((data as { error: unknown }).error)
+      : `Transcriber service returned ${res.status}`;
+    throw new Error(message);
+  }
+
+  return data as T;
+}
+
 export default function Transcriber() {
   useHead({
     title: "Free Social Media Video Transcription Tool | Luxetide Studio",
@@ -70,14 +91,23 @@ export default function Transcriber() {
 
   const pollJob = (jobId: string): Promise<JobResult> => {
     return new Promise((resolve, reject) => {
+      const startedAt = Date.now();
       const interval = setInterval(async () => {
         try {
+          if (Date.now() - startedAt > 10 * 60 * 1000) {
+            clearInterval(interval);
+            reject(new Error("Transcription is taking longer than expected. Please try a shorter clip or try again in a few minutes."));
+            return;
+          }
           const res = await fetch(`${API}/api/status/${jobId}`);
-          const job: JobResult = await res.json();
+          const job = await readJson<JobResult>(res);
           setStatus(job.message);
           if (job.status === "done") { clearInterval(interval); resolve(job); }
           else if (job.status === "error") { clearInterval(interval); reject(new Error(job.message)); }
-        } catch {}
+        } catch (err: any) {
+          clearInterval(interval);
+          reject(new Error(err?.message || "Could not reach the transcriber service. Please try again."));
+        }
       }, 1200);
     });
   };
@@ -90,8 +120,7 @@ export default function Transcriber() {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: url.trim() }),
       });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
+      const data = await readJson<{ job_id: string }>(res);
       const job = await pollJob(data.job_id);
       setResult(job);
     } catch (err: any) {
@@ -105,8 +134,7 @@ export default function Transcriber() {
     formData.append("file", file);
     try {
       const res = await fetch(`${API}/api/transcribe/upload`, { method: "POST", body: formData });
-      const data = await res.json();
-      if (data.error) throw new Error(data.error);
+      const data = await readJson<{ job_id: string }>(res);
       const job = await pollJob(data.job_id);
       setResult(job);
     } catch (err: any) {
