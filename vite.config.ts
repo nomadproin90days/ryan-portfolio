@@ -4,6 +4,22 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 import { vitePrerenderPlugin } from 'vite-prerender-plugin'
 
+// vite-prerender-plugin keeps the event loop alive after writing dist, so
+// `vite build` never exits and CI deploys hang. Everything is flushed by the
+// time closeBundle finishes, so exit explicitly. Build-only: this hook does
+// not run for `vite dev` or `vite preview`.
+const forceExitAfterBuild = {
+  name: 'force-exit-after-build',
+  apply: 'build' as const,
+  closeBundle: {
+    sequential: true,
+    order: 'post' as const,
+    handler() {
+      setTimeout(() => process.exit(0), 250).unref()
+    },
+  },
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -26,6 +42,7 @@ export default defineConfig({
         '/youtube-transcript',
       ],
     }),
+    forceExitAfterBuild,
   ],
   resolve: {
     alias: {
