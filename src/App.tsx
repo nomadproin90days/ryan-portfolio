@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import ContractorsPage from "./pages/CaseStudies/Contractors";
 import HealthcarePage from "./pages/CaseStudies/Healthcare";
 import CsmOperationsPage from "./pages/CaseStudies/CsmOperations";
+import ClarityPage from "./pages/CaseStudies/Clarity";
+import HirePage from "./pages/Hire";
 import Contact from "./pages/Contact";
 import Transcriber from "./pages/Transcriber";
 import InstagramTranscriber from "./pages/InstagramTranscriber";
@@ -24,6 +26,8 @@ export function AnimatedRoutes() {
           <Route path="/case-studies/contractors" element={<ContractorsPage />} />
           <Route path="/case-studies/healthcare" element={<HealthcarePage />} />
           <Route path="/case-studies/csm-operations" element={<CsmOperationsPage />} />
+          <Route path="/case-studies/clarity" element={<ClarityPage />} />
+          <Route path="/hire" element={<HirePage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/transcriber" element={<Transcriber />} />
           <Route path="/instagram-transcript" element={<InstagramTranscriber />} />

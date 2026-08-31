@@ -30,4 +30,17 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://luxetidestudio.com/case-studies/clarity</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxetidestudio.com/journey</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxetidestudio.com/contact</loc>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

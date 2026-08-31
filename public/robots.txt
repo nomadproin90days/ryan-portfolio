@@ -29,3 +29,7 @@ User-agent: Google-Extended
 Disallow: /
 
 Sitemap: https://luxetidestudio.com/sitemap.xml
+
+# Recruiter-facing page, deliberately unlisted.
+User-agent: *
+Disallow: /hire

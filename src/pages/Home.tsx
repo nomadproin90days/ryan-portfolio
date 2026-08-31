@@ -50,10 +50,10 @@ export default function Home() {
   };
 
   const services = [
-    { name: "GoHighLevel CRM Automation", desc: "Workflows, pipelines, tag automations, sub-account management, and API integrations. 184 accounts managed." },
-    { name: "AI Automation", desc: "Voice AI routing, agent deployment, workflow automation via Zapier, Make, and n8n." },
-    { name: "Full-Stack Development", desc: "Next.js, React, TypeScript, Tailwind CSS, Supabase, PostgreSQL, Vercel APIs." },
-    { name: "Revenue Operations", desc: "Stripe billing logic, A2P 10DLC compliance, HIPAA-aware architecture, Google Ads." }
+    { name: "Revenue Systems", desc: "Retention programmes, upsell engines, churn forecasting, and the reporting that makes revenue predictable instead of anecdotal." },
+    { name: "AI Implementation", desc: "Sales co-pilots, autonomous agents, and transcript-to-document pipelines built on Claude and OpenAI. Shipped to production, not demos." },
+    { name: "Production Software", desc: "Next.js, React, TypeScript, Supabase, PostgreSQL. Client portals, dashboards, and event-driven monitors that run unattended." },
+    { name: "CRM & Compliance", desc: "GoHighLevel at scale, A2P 10DLC registration, HIPAA-aware architecture, Google Business Profile and local SEO." }
   ];
 
   return (
@@ -73,14 +73,14 @@ export default function Home() {
         >
           <motion.h1 
             variants={heroItem}
-            className="text-[12vw] md:text-[8vw] lg:text-[120px] font-bold leading-[0.85] tracking-tighter text-foreground mb-8 text-balance"
+            className="text-[10vw] md:text-[6.5vw] lg:text-[88px] font-bold leading-[0.9] tracking-tighter text-foreground mb-8 text-balance"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            Automation<br />Studio
+            I&apos;ve run the book<br />and built the system.
           </motion.h1>
           <div className="flex flex-col md:flex-row gap-10 md:gap-20 max-w-[900px] mb-12">
             <motion.p variants={heroItem} className="text-base text-muted-foreground leading-relaxed flex-1">
-              <strong className="text-foreground font-medium">Ryan Christmas</strong> builds the systems that let agencies and startups scale without adding headcount. CRM automation, AI workflows, full-stack development.
+              <strong className="text-foreground font-medium">Ryan Christmas</strong> builds revenue operations for service businesses — retention, automation, and the software underneath. 138 accounts at 3.4% churn, then the systems that made it repeatable.
             </motion.p>
             <motion.p variants={heroItem} className="text-base text-muted-foreground leading-relaxed flex-1">
               Based in <strong className="text-foreground font-medium">Puerto Escondido, Oaxaca</strong>. Originally from Toronto, Canada. Working remotely across time zones since 2023.
@@ -94,7 +94,7 @@ export default function Home() {
               className="inline-flex items-center gap-3 bg-white text-black font-semibold px-8 py-4 rounded-full text-sm tracking-wide transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:-translate-y-1"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              Book a Discovery Call <span className="text-lg leading-none">→</span>
+              Start a conversation <span className="text-lg leading-none">→</span>
             </a>
           </motion.div>
         </motion.div>
@@ -122,6 +122,11 @@ export default function Home() {
 
       {/* Results Strip */}
       <section className="w-full border-y border-black/10 dark:border-white/10 mb-32">
+        <div className="max-w-[1400px] mx-auto px-5 md:px-14 pt-6">
+          <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
+            Stone Systems &middot; 2025&ndash;26
+          </p>
+        </div>
         <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-black/10 dark:divide-white/10">
           {[
             { num: 138, label: "Clients Managed", suffix: "" },
@@ -269,7 +274,7 @@ export default function Home() {
               className="group bg-black/[0.02] dark:bg-white/[0.03] border border-black/10 dark:border-white/[0.06] p-8 rounded-2xl flex flex-col gap-4 cursor-default hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:border-black/20 dark:hover:border-white/[0.12] transition-colors duration-300"
             >
               <div className="w-10 h-10 rounded-xl bg-black/[0.05] dark:bg-white/[0.06] flex items-center justify-center mb-2">
-                <span className="text-lg">{["⚡", "🤖", "💻", "📊"][i]}</span>
+                <span className="text-lg">{["📈", "🤖", "💻", "⚙️"][i]}</span>
               </div>
               <h3 className="text-lg font-semibold text-foreground tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 {service.name}
@@ -299,6 +304,16 @@ export default function Home() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
+            {
+              to: "/case-studies/clarity",
+              label: "AI Implementation",
+              title: "Sales Co-pilot & Client Portal",
+              desc: "For a residential construction and remodelling firm: recorded sales calls turned into scopes of work, estimates and rep scoring, plus a live client portal and an event-driven operations monitor.",
+              metric: "3",
+              metricLabel: "Systems In Production",
+              gradient: "from-violet-500/20 via-fuchsia-500/10 to-transparent",
+              external: false
+            },
             {
               to: "/case-studies/contractors",
               label: "CRM Automation",

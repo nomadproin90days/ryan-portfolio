@@ -33,6 +33,8 @@ export default defineConfig({
         '/case-studies/contractors',
         '/case-studies/healthcare',
         '/case-studies/csm-operations',
+        '/case-studies/clarity',
+        '/hire',
         '/contact',
         '/journey',
         '/blog/april-2026-performance',

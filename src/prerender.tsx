@@ -33,6 +33,16 @@ const ROUTE_META: Record<string, RouteMeta> = {
     description:
       "One customer success manager, six command-line tools: running a 138-account portfolio on automation instead of headcount.",
   },
+  "/case-studies/clarity": {
+    title: "AI Sales Co-pilot Case Study | Luxetide",
+    description:
+      "A recorded sales call becomes a scope of work, estimate and rep score. Plus a live client portal and an event-driven operations monitor.",
+  },
+  "/hire": {
+    title: "Ryan Christmas: Hiring Information",
+    description:
+      "Availability, work authorisation, and the questions hiring teams ask, answered. AI implementation, solutions architecture, revenue systems.",
+  },
   "/contact": {
     title: "Contact Luxetide Studio",
     description:
@@ -87,12 +97,18 @@ export async function prerender({ url }: PrerenderData) {
     </StaticRouter>,
   );
 
+  // /hire is recruiter-facing and must never surface to a prospective client.
+  const noindex = path === "/hire";
+
   return {
     html,
     head: {
       lang: "en",
       title: meta.title,
       elements: new Set([
+        ...(noindex
+          ? [{ type: "meta", props: { name: "robots", content: "noindex, nofollow" } }]
+          : []),
         { type: "meta", props: { name: "description", content: meta.description } },
         { type: "link", props: { rel: "canonical", href: canonical } },
         { type: "meta", props: { property: "og:title", content: meta.title } },
