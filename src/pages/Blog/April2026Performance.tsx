@@ -103,7 +103,7 @@ export default function April2026Performance() {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-20"
       >
         {metrics.map((metric) => (
-          <div key={metric.label} className="rounded-2xl border border-border bg-white/[0.03] p-6">
+          <div key={metric.label} className="rounded-2xl border border-border bg-black/[0.02] dark:bg-white/[0.03] p-6">
             <div className="text-4xl md:text-5xl font-bold tracking-tighter mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               {metric.value}
             </div>

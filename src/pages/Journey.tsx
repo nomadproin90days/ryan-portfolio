@@ -288,8 +288,8 @@ export default function Journey() {
       </section>
 
       {/* STATS */}
-      <section className="w-full border-y border-white/10 mb-20">
-        <div className="max-w-[1080px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x divide-y lg:divide-y-0 divide-white/10">
+      <section className="w-full border-y border-black/10 dark:border-white/10 mb-20">
+        <div className="max-w-[1080px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x divide-y lg:divide-y-0 divide-black/10 dark:divide-white/10">
           {stats.map((stat, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.08 }} className="p-6 md:p-8 text-center">
               <div className="text-3xl md:text-4xl font-bold tracking-tighter text-foreground mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -319,7 +319,7 @@ export default function Journey() {
               <motion.div key={i} initial={{ opacity: 0, scaleY: 0 }} whileInView={{ opacity: 1, scaleY: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }}
                 className="flex flex-col items-center gap-1 flex-1 min-w-[28px] origin-bottom">
                 <span className="text-[9px] text-muted-foreground font-medium">${pay.amount.toLocaleString()}</span>
-                <div className={`w-full rounded-t-sm transition-colors ${isRaise ? "bg-emerald-500" : "bg-white/20 hover:bg-white/30"}`} style={{ height: `${height}px` }} />
+                <div className={`w-full rounded-t-sm transition-colors ${isRaise ? "bg-emerald-500" : "bg-black/20 dark:bg-white/20 hover:bg-black/30 dark:hover:bg-white/30"}`} style={{ height: `${height}px` }} />
                 <span className="text-[8px] text-muted-foreground">{pay.date}</span>
                 {pay.label && <span className={`text-[8px] font-bold ${isRaise ? "text-emerald-400" : "text-muted-foreground"}`}>{pay.label}</span>}
               </motion.div>
@@ -341,7 +341,7 @@ export default function Journey() {
         <div className="space-y-6">
           {contributions.map((item, idx) => (
             <motion.div key={idx} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-5%" }} transition={{ delay: idx * 0.03 }}
-              className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 border-t border-white/[0.08] pt-8 group">
+              className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 border-t border-black/10 dark:border-white/[0.08] pt-8 group">
               <div className="flex flex-col gap-2">
                 <span className="text-sm font-medium text-foreground">{item.date}</span>
                 <span className="text-[10px] uppercase tracking-widest font-semibold text-emerald-400">{item.tag}</span>
@@ -351,7 +351,7 @@ export default function Journey() {
                 <p className="text-muted-foreground leading-relaxed mb-4">{item.description}</p>
                 <ul className="space-y-1">
                   {item.details.map((detail, i) => (
-                    <li key={i} className="text-sm text-muted-foreground/80 pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-white/20">{detail}</li>
+                    <li key={i} className="text-sm text-muted-foreground/80 pl-4 relative before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-black/20 dark:before:bg-black/20 dark:bg-white/20">{detail}</li>
                   ))}
                 </ul>
               </div>
@@ -369,7 +369,7 @@ export default function Journey() {
           className="text-3xl md:text-5xl font-bold tracking-tighter mb-12" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
           From CSM to Team Lead to Revenue Operator.
         </motion.h2>
-        <div className="relative border-l-2 border-white/10 ml-2 space-y-8">
+        <div className="relative border-l-2 border-black/10 dark:border-white/10 ml-2 space-y-8">
           {timeline.map((item, i) => (
             <motion.div key={i} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}
               className="pl-8 relative">
@@ -396,9 +396,9 @@ export default function Journey() {
 
         {/* Screenshot proof */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}
-          className="mb-12 rounded-2xl border border-white/[0.08] overflow-hidden">
+          className="mb-12 rounded-2xl border border-black/10 dark:border-white/[0.08] overflow-hidden">
           <img src="/images/csm-accountability-may12.png" alt="CSM Accountability dashboard showing $13,306.34 in upsell revenue across client accounts" className="w-full" />
-          <div className="p-4 bg-white/[0.03] border-t border-white/[0.08]">
+          <div className="p-4 bg-black/[0.02] dark:bg-white/[0.03] border-t border-black/10 dark:border-white/[0.08]">
             <span className="text-[10px] uppercase tracking-widest text-emerald-400 font-semibold">Live Platform Data</span>
             <span className="text-xs text-muted-foreground ml-3">June additions: a cleaning company and a construction company, $1,499 SEO Quarterly each</span>
           </div>
@@ -433,7 +433,7 @@ export default function Journey() {
             },
           ].map((proof, i) => (
             <motion.div key={proof.client} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-              className="overflow-hidden rounded-lg border border-white/[0.08] bg-white/[0.03]">
+              className="overflow-hidden rounded-lg border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03]">
               <img src={proof.image} alt={proof.alt} className="aspect-[16/10] w-full object-cover object-top" />
               <div className="p-4">
                 <div className="text-xs font-semibold text-emerald-400 mb-1">{proof.date}</div>
@@ -464,7 +464,7 @@ export default function Journey() {
             { client: "Garage Flooring Company", amount: "$1,499", date: "Apr 22", contact: "SEO Quarterly" },
           ].map((sale, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-              className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-5 hover:border-emerald-500/30 transition-colors">
+              className="rounded-xl border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] p-5 hover:border-emerald-500/30 transition-colors">
               <div className="text-2xl font-bold tracking-tighter text-emerald-400 mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{sale.amount}</div>
               <div className="text-sm font-medium text-foreground mb-1">{sale.client}</div>
               <div className="text-xs text-muted-foreground">{sale.contact} - {sale.date}</div>
@@ -538,7 +538,7 @@ export default function Journey() {
           ].map((call, i) => (
             <motion.a key={i} href={call.url} target="_blank" rel="noreferrer"
               initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-              className="block rounded-xl border border-white/[0.08] bg-white/[0.03] p-6 hover:border-emerald-500/30 hover:bg-white/[0.05] transition-all group">
+              className="block rounded-xl border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] p-6 hover:border-emerald-500/30 hover:bg-black/[0.04] dark:hover:bg-white/[0.05] transition-all group">
               <div className="flex flex-col md:flex-row md:items-start gap-4">
                 <div className="flex-shrink-0 flex flex-col items-center md:items-start gap-1 md:w-[100px]">
                   <span className="text-xs font-semibold text-emerald-400">{call.date}</span>
@@ -582,7 +582,7 @@ export default function Journey() {
             { title: "Top 3 Google Guarantee", desc: "The offer: top 3 placement on Google within 90 days. If we don't deliver, we keep working at no charge until we do. Zero risk for the client." },
           ].map((item, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-              className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-5 hover:border-emerald-500/20 transition-colors">
+              className="rounded-xl border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] p-5 hover:border-emerald-500/20 transition-colors">
               <h3 className="text-sm font-semibold text-foreground mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.title}</h3>
               <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
             </motion.div>
@@ -652,7 +652,7 @@ export default function Journey() {
             },
           ].map((faq, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }}
-              className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-6 md:p-8">
+              className="rounded-xl border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] p-6 md:p-8">
               <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-4 text-emerald-400" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 "{faq.q}"
               </h3>
@@ -687,7 +687,7 @@ export default function Journey() {
             { count: 13, type: "Check-ins" },
           ].map((item, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-              className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 text-center">
+              className="rounded-xl border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] p-4 text-center">
               <div className="text-2xl md:text-3xl font-bold tracking-tighter text-foreground mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 {item.count}
               </div>
@@ -721,7 +721,7 @@ export default function Journey() {
               <motion.div key={i} initial={{ opacity: 0, scaleY: 0 }} whileInView={{ opacity: 1, scaleY: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
                 className="flex flex-col items-center gap-1 flex-1 min-w-[24px] origin-bottom">
                 <span className="text-[9px] text-muted-foreground font-medium">{m.calls}</span>
-                <div className={`w-full rounded-t-sm transition-colors ${isHighlight ? "bg-emerald-500" : "bg-white/20 hover:bg-white/30"}`} style={{ height: `${height}px` }} />
+                <div className={`w-full rounded-t-sm transition-colors ${isHighlight ? "bg-emerald-500" : "bg-black/20 dark:bg-white/20 hover:bg-black/30 dark:hover:bg-white/30"}`} style={{ height: `${height}px` }} />
                 <span className="text-[7px] md:text-[8px] text-muted-foreground">{m.month}</span>
                 {m.note && <span className={`text-[7px] font-bold ${isHighlight ? "text-emerald-400" : "text-muted-foreground"}`}>{m.note}</span>}
               </motion.div>
@@ -735,7 +735,7 @@ export default function Journey() {
 
       {/* FIRST CALL */}
       <section className="w-full max-w-[1080px] px-5 md:px-14 mb-20">
-        <div className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 md:p-12">
+        <div className="rounded-2xl border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-8">
             <div>
               <p className="text-xs tracking-widest uppercase text-emerald-400 font-semibold mb-4">First Recording</p>
@@ -758,7 +758,7 @@ export default function Journey() {
                   ["$8,009", "commission"],
                   ["#1", "rank"],
                 ].map(([value, label]) => (
-                  <div key={label} className="rounded-xl bg-black/[0.3] border border-white/[0.06] p-4">
+                  <div key={label} className="rounded-xl bg-black/[0.05] dark:bg-black/[0.3] border border-black/10 dark:border-white/[0.06] p-4">
                     <div className="text-2xl font-bold tracking-tighter mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{value}</div>
                     <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{label}</div>
                   </div>
@@ -776,7 +776,7 @@ export default function Journey() {
         </motion.p>
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-wrap gap-2">
           {["Next.js", "React", "TypeScript", "Supabase", "GoHighLevel API", "Claude AI", "Playwright", "pgvector", "Google Ads API", "Google Search Console", "Google Business Profile", "Fathom AI", "Vercel", "Node.js", "Tailwind CSS"].map((tech) => (
-            <motion.span key={tech} variants={fadeUp} className="text-xs font-medium px-4 py-2 rounded-full border border-white/10 text-muted-foreground hover:border-white/20 hover:text-foreground transition-colors">
+            <motion.span key={tech} variants={fadeUp} className="text-xs font-medium px-4 py-2 rounded-full border border-black/10 dark:border-white/10 text-muted-foreground hover:border-black/20 dark:hover:border-white/20 hover:text-foreground transition-colors">
               {tech}
             </motion.span>
           ))}

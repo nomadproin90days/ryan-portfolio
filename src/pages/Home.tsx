@@ -121,8 +121,8 @@ export default function Home() {
       </div>
 
       {/* Results Strip */}
-      <section className="w-full border-y border-white/10 mb-32">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/10">
+      <section className="w-full border-y border-black/10 dark:border-white/10 mb-32">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-black/10 dark:divide-white/10">
           {[
             { num: 138, label: "Clients Managed", suffix: "" },
             { num: 44.7, label: "MRR Under Mgmt", suffix: "K", prefix: "$", float: true },
@@ -266,9 +266,9 @@ export default function Home() {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
               whileHover={{ scale: 1.03, y: -5 }}
-              className="group bg-white/[0.03] border border-white/[0.06] p-8 rounded-2xl flex flex-col gap-4 cursor-default hover:bg-white/[0.06] hover:border-white/[0.12] transition-colors duration-300"
+              className="group bg-black/[0.02] dark:bg-white/[0.03] border border-black/10 dark:border-white/[0.06] p-8 rounded-2xl flex flex-col gap-4 cursor-default hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:border-black/20 dark:hover:border-white/[0.12] transition-colors duration-300"
             >
-              <div className="w-10 h-10 rounded-xl bg-white/[0.06] flex items-center justify-center mb-2">
+              <div className="w-10 h-10 rounded-xl bg-black/[0.05] dark:bg-white/[0.06] flex items-center justify-center mb-2">
                 <span className="text-lg">{["⚡", "🤖", "💻", "📊"][i]}</span>
               </div>
               <h3 className="text-lg font-semibold text-foreground tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -348,7 +348,7 @@ export default function Home() {
                 <motion.div
                   whileHover={{ scale: 1.02, y: -4 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="w-full h-full rounded-2xl overflow-hidden border border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] transition-colors duration-300"
+                  className="w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/[0.06] bg-black/[0.015] dark:bg-white/[0.02] hover:border-black/20 dark:hover:border-white/[0.12] transition-colors duration-300"
                 >
                   <div className={`p-10 md:p-14 bg-gradient-to-br ${project.gradient}`}>
                     <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-6">{project.label}</p>
@@ -357,7 +357,7 @@ export default function Home() {
                     </div>
                     <p className="text-sm text-muted-foreground">{project.metricLabel}</p>
                   </div>
-                  <div className="p-8 border-t border-white/[0.06]">
+                  <div className="p-8 border-t border-black/10 dark:border-white/[0.06]">
                     <h3 className="text-xl font-semibold mb-2 group-hover:text-white transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                       {project.title} <span className="inline-block group-hover:translate-x-1 transition-transform">{project.external ? "↗" : "→"}</span>
                     </h3>
@@ -392,7 +392,7 @@ export default function Home() {
             viewport={{ once: true, amount: 0.1 }}
             whileHover={{ scale: 1.01, y: -3 }}
             transition={{ duration: 0.45 }}
-            className="rounded-3xl border border-white/[0.08] bg-white/[0.03] p-8 md:p-12 hover:border-white/[0.16] hover:bg-white/[0.05] transition-colors"
+            className="rounded-3xl border border-black/10 dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.03] p-8 md:p-12 hover:border-black/20 dark:hover:border-white/[0.16] hover:bg-black/[0.04] dark:hover:bg-white/[0.05] transition-colors"
           >
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 items-end">
               <div>
@@ -411,7 +411,7 @@ export default function Home() {
                   ["$8K", "commission"],
                   ["#1", "leaderboard"],
                 ].map(([value, label]) => (
-                  <div key={label} className="rounded-2xl bg-black/[0.18] border border-white/[0.06] p-5">
+                  <div key={label} className="rounded-2xl bg-black/[0.05] dark:bg-black/[0.18] border border-black/10 dark:border-white/[0.06] p-5">
                     <div className="text-3xl font-bold tracking-tighter mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{value}</div>
                     <div className="text-[11px] uppercase tracking-widest text-muted-foreground">{label}</div>
                   </div>
