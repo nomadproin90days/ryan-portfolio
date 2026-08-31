@@ -13,7 +13,7 @@ import April2026Performance from "./pages/Blog/April2026Performance";
 import Journey from "./pages/Journey";
 import Layout from "./components/Layout";
 
-function AnimatedRoutes() {
+export function AnimatedRoutes() {
   const location = useLocation();
 
   return (
